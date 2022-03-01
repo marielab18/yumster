@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :recipes, only: [:selection, :show, :update] do
     resources :favorites, only: [:create]
   end
-  resources :favorites, only: [:dashboard, :destroy]
+  resources :favorites, only: [:destroy]
+  get "dashboard", to: "favorites#dashboard"
 end
