@@ -48,3 +48,4 @@ Favorite.create!(
   user: User.first,
   recipe: Recipe.first
 )
+
