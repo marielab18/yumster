@@ -1,3 +1,5 @@
+require "open-uri"
+
 lorem = '
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ipsum id saepe eligendi ducimus. Corrupti, perspiciatis quo ex distinctio ipsam, dolorum nihil porro, placeat recusandae ad accusantium illo. Sint, soluta?
 '
@@ -17,10 +19,13 @@ User.create!(
 
 puts 'Create Ingredients'
 
-ing1= Ingredient.create!(
+ing1 = Ingredient.create!(
   name: 'Chicken',
   category: 'Protein'
 )
+file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646317382/chicken_mmehqa.png')
+# ing1 = Ingredient.new(title: 'Chicken', body: "Chicken icon")
+ing1.photo.attach(io: file, filename: 'chicken.png', content_type: 'image/png')
 
 ing2 = Ingredient.create!(
   name: 'Noodles',
