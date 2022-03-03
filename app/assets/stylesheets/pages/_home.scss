@@ -1,6 +1,13 @@
 // Specific CSS for your home-page
+.navbar {
+  background: #FFEABF;
+  max-width: 576px;
+}
+
 .container-fluid {
   max-width: 576px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .banner {
@@ -12,9 +19,8 @@
   border-bottom-left-radius: 100px;
 }
 
-.btn {
-  position: relative;
-  left: 460px;
+.dropdown {
+  margin-left: 420px;
 }
 
 .ingredient-slot {
@@ -22,6 +28,11 @@
   text-align: center;
   padding-top: 30px;
   padding-bottom: 30px;
-  background: white-beige;
+  background: #FFEABF;
   box-shadow: inset 4px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.choose-button{
+  margin-top: 20px;
+  margin-left: 236px;
 }
