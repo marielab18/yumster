@@ -1,0 +1,18 @@
+<h1><%= @recipe.name %></h1>
+
+<ul>
+  <li><%= "time: #{@recipe.minutes}" %></li>
+  <li><%= "Kcal: #{@recipe.nutritional_info}" %></li>
+</ul>
+
+<p><%= @recipe.description %></p>
+
+<ul>
+  <% if @recipe == Recipe.last %>
+    <li><%= link_to "NO", selection_path(Recipe.first) %></li>
+  <% else %>
+    <li><%= link_to "NO", selection_path(@recipe.id.next) %></li>
+  <% end %>
+
+  <li><%= link_to "yes", recipe_path(@recipe) %></li>
+</ul>

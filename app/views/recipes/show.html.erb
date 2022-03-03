@@ -1,0 +1,12 @@
+<h1><%= @recipe.name %></h1>
+
+<h2>Here are the instructions</h2>
+
+<p>Your main ingredients:</p>
+<ul>
+<% @recipe.ingredient_recipes.each do |ing| %>
+  <li></li><%= ing.ingredient.name %>
+<% end %>
+</ul>
+
+<p><%= @recipe.instructions %></p>
