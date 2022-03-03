@@ -20,6 +20,9 @@
         <div class= "col-sm-12 d-flex allign-item-center">
           <h3>slot carbs</h3>
         </div>
+          <% @ingredients_carbs.each do |ingredient| %>
+            <li><%= ingredient.name %></li>
+          <% end %>'
       </div>
     </div>
   </div>
@@ -29,6 +32,9 @@
         <div class= "col-sm-12 d-flex allign-item-center">
           <h2>slot meat/plant protein</h2>
         </div>
+        <% @ingredients_protein.each do |ingredient| %>
+          <li><%= ingredient.name %></li>
+        <% end %>
       </div>
     </div>
   </div>
@@ -38,6 +44,9 @@
           <div class= "col-sm-12 d-flex allign-item-center">
             <h2>slot veggies</h2>
           </div>
+          <% @ingredients_vegetable.each do |ingredient| %>
+            <li><%= ingredient.name %></li>
+          <% end %>
         </div>
       </div>
     </div>

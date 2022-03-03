@@ -1,6 +1,14 @@
 class RecipesController < ApplicationController
   def selection
-    @recipe = Recipe.find(params[:id])
+    if Recipe.find(params[:id]).present?
+
+      @recipe = Recipe.find(params[:id])
+    else
+
+      @recipe = Recipe.first
+
+    end
+
 
 
     #search with the ingredirents

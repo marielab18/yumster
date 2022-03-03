@@ -8,6 +8,11 @@
 <p><%= @recipe.description %></p>
 
 <ul>
-  <%# <li><%= #link_to "NO", selection_path(@recipe_next)  %>
+  <% if @recipe == Recipe.last %>
+    <li><%= link_to "NO", selection_path(Recipe.first) %></li>
+  <% else %>
+    <li><%= link_to "NO", selection_path(@recipe.id.next) %></li>
+  <% end %>
+
   <li><%= link_to "yes", recipe_path(@recipe) %></li>
 </ul>
