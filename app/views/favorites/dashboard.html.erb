@@ -1,0 +1,6 @@
+<h2>See your bookmarks</h2>
+<ol>
+  <% @favorite_recipes.each do |favorite| %>
+    <li><%= favorite.recipe.name %></li>
+  <% end %>
+</ol>
