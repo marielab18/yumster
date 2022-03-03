@@ -98,8 +98,8 @@ puts 'Create Recipes'
 recipe1 = Recipe.create!(
   name: 'Curly 🐔 Chicken',
   description: 'Not chicken nuggets, but great',
-  minutes: 5,
-  nutritional_info: lorem,
+  minutes: '10Min',
+  nutritional_info: '500 Kcal',
   instructions: lorem
 )
 file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646322010/development/curlychicken_ubqfxe.png')
@@ -108,8 +108,8 @@ recipe1.photo.attach(io: file, filename: 'curlychicken.png', content_type: 'imag
 recipe2 = Recipe.create!(
   name: 'Spicy Chicken',
   description: 'Winner winner chicken dinner',
-  minutes: 15,
-  nutritional_info: lorem,
+  minutes: '15Min',
+  nutritional_info: '500 Kcal',
   instructions: lorem
 )
 file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646322242/development/spicychicken_gwlhdw.jpg')
@@ -118,8 +118,8 @@ recipe2.photo.attach(io: file, filename: 'spicychicken.png', content_type: 'imag
 recipe3 = Recipe.create!(
   name: 'Shrimp Pasta',
   description: 'Yummy quick pasta',
-  minutes: 10,
-  nutritional_info: lorem,
+  minutes: '10Min',
+  nutritional_info: '500 Kcal',
   instructions: lorem
 )
 file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646322458/development/garlicshrimppasta_qiltqd.jpg')
@@ -129,8 +129,8 @@ recipe3.photo.attach(io: file, filename: 'garlicshrimppasta.png', content_type: 
 recipe4 = Recipe.create!(
   name: 'Ceasar Salad',
   description: 'Not chicken nuggets, but healthy',
-  minutes: 5,
-  nutritional_info: lorem,
+  minutes: '10Min',
+  nutritional_info: '300 Kcal',
   instructions: lorem
 )
 file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646322819/development/caesarsalad_lruxdq.jpg')
@@ -140,8 +140,8 @@ recipe4.photo.attach(io: file, filename: 'caesarsalad.png', content_type: 'image
 recipe5 = Recipe.create!(
   name: 'Beef Soup',
   description: 'Hong Kong Dim-like',
-  minutes: 5,
-  nutritional_info: lorem,
+  minutes: '20Min',
+  nutritional_info: '500 Kcal',
   instructions: lorem
 )
 file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646322982/development/beefsoup_bp5rn8.jpg')
