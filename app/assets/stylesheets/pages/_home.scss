@@ -1,1 +1,27 @@
 // Specific CSS for your home-page
+.container-fluid {
+  max-width: 576px;
+}
+
+.banner {
+  height: 247px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  background: #FFEABF;
+  box-shadow: inset 4px 0px 4px rgba(0, 0, 0, 0.25);
+  border-bottom-left-radius: 100px;
+}
+
+.btn {
+  position: relative;
+  left: 460px;
+}
+
+.ingredient-slot {
+  height: 150px;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: white-beige;
+  box-shadow: inset 4px 0px 4px rgba(0, 0, 0, 0.25);
+}
