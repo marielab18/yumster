@@ -1,18 +1,34 @@
-<h1><%= @recipe.name %></h1>
+<div class="container" >
 
-<ul>
-  <li><%= "time: #{@recipe.minutes}" %></li>
-  <li><%= "Kcal: #{@recipe.nutritional_info}" %></li>
-</ul>
+  <div  class="d-flex justify-content-between">
 
-<p><%= @recipe.description %></p>
+      <%= link_to "🏠", root_path %>
 
-<ul>
-  <% if @recipe == Recipe.last %>
-    <li><%= link_to "NO", selection_path(Recipe.first) %></li>
-  <% else %>
-    <li><%= link_to "NO", selection_path(@recipe.id.next) %></li>
-  <% end %>
+      <% if @favorite.nil? %>
+        <%= link_to "⭐️", recipe_favorites_path(@recipe), method: :post %>
+      <% else %>
+        <%= link_to "🗑", favorite_path(@favorite), method: :delete %>
+      <% end %>
 
-  <li><%= link_to "yes", recipe_path(@recipe) %></li>
-</ul>
+  </div>
+
+  <h1><%= @recipe.name %></h1>
+
+  <div  class="d-flex justify-content-between">
+    <%= "⏰: #{@recipe.minutes}" %>
+    <%= "📝: #{@recipe.nutritional_info}" %>
+  </div>
+
+  <p><%= @recipe.description %></p>
+
+  <div  class="d-flex justify-content-between">
+    <% if @recipe == Recipe.last %>
+      <%= link_to "❌", selection_path(Recipe.first) %>
+    <% else %>
+      <%= link_to "❌", selection_path(@recipe.id.next) %>
+    <% end %>
+
+    <%= link_to "✅", recipe_path(@recipe) %>
+  </div>
+
+</div>
