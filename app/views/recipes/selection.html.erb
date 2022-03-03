@@ -1,0 +1,13 @@
+<h1><%= @recipe.name %></h1>
+
+<ul>
+  <li><%= "time: #{@recipe.minutes}" %></li>
+  <li><%= "Kcal: #{@recipe.nutritional_info}" %></li>
+</ul>
+
+<p><%= @recipe.description %></p>
+
+<ul>
+  <%# <li><%= #link_to "NO", selection_path(@recipe_next)  %>
+  <li><%= link_to "yes", recipe_path(@recipe) %></li>
+</ul>
