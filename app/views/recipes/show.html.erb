@@ -1,25 +1,19 @@
-<div  class="container" >
-  <div class= "d-flex justify-content-center gap-2">
-    <div class="product-img">
-        <%= cl_image_tag @recipe.photo.key, height: 500, width: 500, crop: :fill %>
-       <div  class="d-flex justify-content-between">
-          <h1><%= link_to "🔙", selection_path(@recipe) %></h1>
-
-          <% if @favorite.nil? %>
-            <%= link_to "⭐️", recipe_favorites_path(@recipe), method: :post %>
-          <% else %>
-            <%= link_to "🗑", favorite_path(@favorite), method: :delete %>
-          <% end %>
-      </div>
-        <h1><%= @recipe.name %></h1>
-        <h2>Here are the instructions</h2>
-        <ul>
-          <% @recipe.ingredient_recipes.each do |ing| %>
-            <li></li><%= ing.ingredient.name %>
-          <% end %>
-        </ul>
-
-    </div>
+<div  class="container-fluid p-0" >
+  <div class="d-flex justify-content-between">
+    <h1><%= link_to "🔙", selection_path(@recipe) %></h1>
+    <h1 class = "text-center" class = "m-3" ><strong><%= @recipe.name %></strong></h1>
+    <% if @favorite.nil? %>
+      <h1><%= link_to "⭐️", recipe_favorites_path(@recipe), method: :post %></h1>
+    <% else %>
+      <h1><%= link_to "🗑", favorite_path(@favorite), method: :delete %></h1>
+    <% end %>
   </div>
-  <p><%= @recipe.instructions %></p>
+  <%= cl_image_tag @recipe.photo.key, height: 500, width: 500, crop: :fill, class: "mb-3" %>
+  <h4 class = "m-3">Cooking instructions:</h4>
+
+  <% @recipe.ingredient_recipes.each do |ing| %>
+    <p class = "text-center" ><%= ing.ingredient.name %></p>
+  <% end %>
+
+  <p class = "m-3"><%= @recipe.instructions %></p>
 </div>
