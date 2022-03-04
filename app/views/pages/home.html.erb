@@ -1,31 +1,27 @@
 
-<div class="container-fluid">
-  <div class="banner">
-    <div class= "col-sm-12">
-      <%=image_tag "logo-yumster.svg"%>
+<div class="container-fluid p-0">
+  <div class="container-fluid p-0">
+    <div class="banner">
+      <div class= "col-sm-12 ">
+        <%=image_tag "logo-yumster.svg"%>
+      </div>
     </div>
   </div>
-</div>
-
 <br>
 <br>
-  <div class="container-fluid">
     <div class="ingredient-slot">
       <div class="row">
-        <div class= "col-sm-12 d-flex allign-item-center">
+        <div class= "col-sm-12 d-flex align-item-center">
           <h3>slot carbs</h3>
         </div>
           <% @ingredients_carbs.each do |ingredient| %>
             <li><%= ingredient.name %></li>
-
           <% end %>'
       </div>
     </div>
-  </div>
-  <div class="container-fluid">
     <div class="ingredient-slot">
       <div class="row">
-        <div class= "col-sm-12 d-flex allign-item-center">
+        <div class= "col-sm-12 d-flex align-item-center">
           <h2>slot meat/plant protein</h2>
         </div>
         <% @ingredients_protein.each do |ingredient| %>
@@ -33,11 +29,9 @@
         <% end %>
       </div>
     </div>
-  </div>
-  <div class="container-fluid">
       <div class="ingredient-slot">
         <div class="row">
-          <div class= "col-sm-12 d-flex allign-item-center">
+          <div class= "col-sm-12 d-flex align-item-center">
             <h2>slot veggies</h2>
           </div>
           <% @ingredients_vegetable.each do |ingredient| %>
@@ -45,9 +39,6 @@
           <% end %>
         </div>
       </div>
-    </div>
-  </div>
-<div class="container-fluid">
   <div class="footer">
     <div class= "col-sm-12">
       <button type="button" class="choose-button btn-warning justify-content-center">Go to recipe</button>
