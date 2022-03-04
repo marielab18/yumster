@@ -1,14 +1,14 @@
 // Specific CSS for your home-page
-.navbar {
-  background: #FFEABF;
-  max-width: 576px;
+body {
+  min-height: 100vh;
+  padding: 0;
 }
 
-.container-fluid {
-  max-width: 576px;
-  padding-left: 0px;
-  padding-right: 0px;
+.navbar {
+  background: #FFEABF;
 }
+
+
 
 .banner {
   height: 247px;
