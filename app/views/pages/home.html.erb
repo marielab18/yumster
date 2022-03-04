@@ -1,5 +1,6 @@
 
 <div class="container-fluid p-0">
+      <%= render '/shared/navbar' %>
   <div class="container-fluid p-0">
     <div class="row">
       <div class= "col-12">
@@ -13,7 +14,7 @@
 <br>
     <div class="ingredient-slot">
       <div class="row">
-        <div class= "col-sm-12 d-flex align-item-center">
+        <div class= "col-12 d-flex align-item-center">
           <h3>slot carbs</h3>
         </div>
           <% @ingredients_carbs.each do |ingredient| %>
@@ -23,7 +24,7 @@
     </div>
     <div class="ingredient-slot">
       <div class="row">
-        <div class= "col-sm-12 d-flex align-item-center">
+        <div class= "col-12 d-flex align-item-center">
           <h2>slot meat/plant protein</h2>
         </div>
         <% @ingredients_protein.each do |ingredient| %>
@@ -33,7 +34,7 @@
     </div>
       <div class="ingredient-slot">
         <div class="row">
-          <div class= "col-sm-12 d-flex align-item-center">
+          <div class= "col-12 d-flex align-item-center">
             <h2>slot veggies</h2>
           </div>
           <% @ingredients_vegetable.each do |ingredient| %>
@@ -42,8 +43,8 @@
         </div>
       </div>
   <div class="footer">
-    <div class= "col-sm-12">
-      <button type="button" class="choose-button btn-warning justify-content-center">Go to recipe</button>
+    <div class= "col-12 align-item-center justify-content center">
+    <a href="<%= recipe_path(Recipe.first) %>" class="btn btn-warning" role="button">Go to recipe</a>
     </div>
   </div>
 </div>

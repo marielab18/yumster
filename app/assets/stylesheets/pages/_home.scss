@@ -23,8 +23,11 @@ body {
   height:280px;
   width: 650px;
   position: absolute;
-  left: 60px;
+  left: 20px;
   bottom: 2px;
+  width: fit-content;
+  width: -moz-fit-content;
+
 }
 
 .dropdown {
@@ -42,5 +45,4 @@ body {
 
 .choose-button{
   margin-top: 20px;
-  margin-left: 236px;
 }
