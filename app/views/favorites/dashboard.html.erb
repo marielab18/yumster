@@ -1,7 +1,9 @@
 <div  class="container-fluid" >
   <div class= "d-flex justify-content-center gap-2">
    <div class="col-12">
-  <%= link_to "🏠", root_path %>
+    <%= link_to root_path do %>
+      <%= image_tag "home.png", height: 20, width: 20 %>
+    <% end %>
   <h1>Hi Etienne,</h1>
     <h2>Your saved recipes:</h2>
       <ol>
@@ -20,4 +22,3 @@
   </div>
 </div>
 </div>
-  </div>
