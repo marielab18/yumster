@@ -8,8 +8,6 @@ body {
   background: #FFEABF;
 }
 
-
-
 .banner {
   height: 247px;
   padding-top: 15px;
@@ -17,6 +15,16 @@ body {
   background: #FFEABF;
   box-shadow: inset 4px 0px 4px rgba(0, 0, 0, 0.25);
   border-bottom-left-radius: 100px;
+  position: relative;
+}
+
+.banner img {
+  border: 2px red;
+  height:280px;
+  width: 650px;
+  position: absolute;
+  left: 60px;
+  bottom: 2px;
 }
 
 .dropdown {
