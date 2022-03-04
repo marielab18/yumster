@@ -1,26 +1,25 @@
 <div  class="container" >
-  <div  class="d-flex justify-content-between">
+  <div class= "d-flex justify-content-center gap-2">
+    <div class="product-img">
+        <%= cl_image_tag @recipe.photo.key, height: 500, width: 500, crop: :fill %>
+       <div  class="d-flex justify-content-between">
+          <h1><%= link_to "🔙", selection_path(@recipe) %></h1>
 
-     <h1><%= link_to "🔙", selection_path(@recipe) %></h1>
+          <% if @favorite.nil? %>
+            <%= link_to "⭐️", recipe_favorites_path(@recipe), method: :post %>
+          <% else %>
+            <%= link_to "🗑", favorite_path(@favorite), method: :delete %>
+          <% end %>
+      </div>
+        <h1><%= @recipe.name %></h1>
+        <h2>Here are the instructions</h2>
+        <ul>
+          <% @recipe.ingredient_recipes.each do |ing| %>
+            <li></li><%= ing.ingredient.name %>
+          <% end %>
+        </ul>
 
-      <% if @favorite.nil? %>
-        <%= link_to "⭐️", recipe_favorites_path(@recipe), method: :post %>
-      <% else %>
-        <%= link_to "🗑", favorite_path(@favorite), method: :delete %>
-      <% end %>
-
+    </div>
   </div>
-
-  <h1><%= @recipe.name %></h1>
-
-  <h2>Here are the instructions</h2>
-
-  <p>Your main ingredients:</p>
-  <ul>
-  <% @recipe.ingredient_recipes.each do |ing| %>
-    <li></li><%= ing.ingredient.name %>
-  <% end %>
-  </ul>
-
   <p><%= @recipe.instructions %></p>
 </div>
