@@ -1,6 +1,24 @@
-<h2>See your bookmarks</h2>
-<ol>
-  <% @favorite_recipes.each do |favorite| %>
-    <li><%= favorite.recipe.name %></li>
-  <% end %>
-</ol>
+<div  class="container-fluid" >
+  <div class= "d-flex justify-content-center gap-2">
+   <div class="col-12">
+    <%= link_to root_path do %>
+      <%= image_tag "home.png", height: 20, width: 20 %>
+    <% end %>
+  <h1>Hi Etienne,</h1>
+    <h2>Your saved recipes:</h2>
+      <ol>
+         <% @favorite_recipes.each do |favorite| %>
+        <li><%= favorite.recipe.name %></li>
+            <div class="product-img">
+        <%= cl_image_tag @recipe.photo.key, height: 500, width: 500, crop: :fill %>
+      <% end %>
+    </ol>
+  <div class="card-product">
+    <img src="https://preview.redd.it/64pzpiawjyg71.png?auto=webp&s=93b686e7fd4da66cb011918e4c157c94604f2e83" />
+    <div class="card-product-infos">
+      <h2>Curly Chicken</h2>
+      <p>This insanely well cooked chicken will curl your tougue! <strong>Please enjoy!</strong></p>
+    </div>
+  </div>
+</div>
+</div>

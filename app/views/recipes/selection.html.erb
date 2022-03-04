@@ -17,18 +17,21 @@
         </div>
         <h1><%= @recipe.name %></h1>
         <p><%= @recipe.description %></p>
-        <div  class="d-flex justify-content-between">
-          <% if @recipe == Recipe.last %>
-            <%= link_to "❌", selection_path(Recipe.first) %>
-          <% else %>
-            <%= link_to "❌", selection_path(@recipe.id.next) %>
-          <% end %>
-          <%= link_to "✅", recipe_path(@recipe) %>
-        </div>
+
         <div class= "swipe-btn">
           <div class="d-flex justify-content-between">
-              <%=image_tag "redx.png", height: 50, width: 50%>
-              <%=image_tag "yes.png", height: 50, width: 50%>
+            <% if @recipe == Recipe.last %>
+              <%= link_to selection_path(Recipe.first) do %>
+                <%= image_tag "redx.png", height: 50, width: 50 %>
+              <% end %>
+            <% else %>
+              <%= link_to selection_path(@recipe.id.next) do %>
+                <%= image_tag "redx.png", height: 50, width: 50 %>
+              <% end %>
+            <% end %>
+              <%= link_to recipe_path(@recipe) do %>
+                <%= image_tag "yes.png", height: 50, width: 50 %>
+              <% end %>
           </div>
         </div>
       </div>
