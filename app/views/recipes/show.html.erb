@@ -1,15 +1,19 @@
 <div  class="container-fluid p-0 my-3" >
   <div class="show-recipe">
     <div class="d-flex justify-content-between">
-      <h1><%= link_to "🔙", selection_path(@recipe) %></h1>
+      <%= link_to selection_path(@recipe) do %>
+        <%= image_tag "back_left.png", height: 20, width: 20 %>
+      <% end %>
       <h1 class = "text-center" class = "m-3" ><strong><%= @recipe.name %></strong></h1>
       <% if @favorite.nil? %>
-        <h1><%= link_to "⭐️", recipe_favorites_path(@recipe), method: :post %></h1>
+        <%= link_to recipe_favorites_path(@recipe), method: :post do %>
+          <%= image_tag "ribbon1.png", height: 20, width: 25 %>
+        <% end %>
       <% else %>
-        <h1><%= link_to "🗑", favorite_path(@favorite), method: :delete %></h1>
+        <p><%= link_to "🗑", favorite_path(@favorite), method: :delete %></p>
       <% end %>
     </div>
-    <%= cl_image_tag @recipe.photo.key, height: 500, width: 500, crop: :fill, class: "show_img", class: "mb-3" %>
+    <%= cl_image_tag @recipe.photo.key, height: 400, width: 500, crop: :fill, class: "show_img", class: "mb-3" %>
     <h4 class = "m-3">Cooking instructions:</h4>
 
     <% @recipe.ingredient_recipes.each do |ing| %>
