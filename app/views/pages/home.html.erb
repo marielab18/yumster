@@ -10,34 +10,16 @@
   <br>
   <br>
 
-  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-      <div class="ingredient-slot">
-        <div class="row">
-          <%= f.input :carbs, collection: @ingredients_carbs %>
-        </div>
-      </div>
-      <div class="ingredient-slot">
-        <div class="row">
-          <%= f.input :protein, collection: @ingredients_protein %>
-        </div>
-      </div>
-        <div class="ingredient-slot">
-          <div class="row">
-            <%= f.input :vegetable, collection: @ingredients_vegetable %>
-          </div>
-        </div>
-    <div class= "col-12 d-flex justify-content-center">
-        <%= f.submit 'Search', id:"finish-button"%>
+  <%= simple_form_for :search, url: search_recipes_path, method: :get do |f| %>
+    <div class="ingredient-slot">
+      <%= f.input :protein, as: :select, collection: @ingredients_proteins %>
     </div>
+    <div class="ingredient-slot">
+      <%= f.input :carb, as: :select, collection: @ingredients_carbs %>
+    </div>
+    <div class="ingredient-slot">
+      <%= f.input :vegetable, as: :select, collection: @ingredients_vegetables %>
+    </div>
+     <%= submit_tag "Search", id: "finish-button" %>
   <% end %>
 </div>
-
-
-
-
-<%= simple_form_for :search, url: search_recipes_path, method: :get do |f| %>
-  <%= f.input :protein, as: :select, collection: @ingredients_proteins %>
-  <%= f.input :carb, as: :select, collection: @ingredients_carbs %>
-  <%= f.input :vegetable, as: :select, collection: @ingredients_vegetables %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
