@@ -17,8 +17,8 @@
     </div>
     <div class= "recipe-info">
       <div  class="d-flex justify-content-center">
-        <%= "⏰: #{@recipe.minutes}" %>
-        <%= "📝: #{@recipe.nutritional_info}" %>
+        <%= image_tag "timer.png", height: 20, width: 20 %> <%= "#{@recipe.minutes} Min." %>
+        <%= image_tag "fire1.png", height: 18, width: 18 %> <%= "#{@recipe.nutritional_info}" %>
       </div>
     </div>
     <h1 class= "text-center"><%= @recipe.name %></h1>
