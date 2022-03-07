@@ -8,15 +8,20 @@
   </div>
   <h1 class = "pt-3 my-3" >Hi, </h1>
   <h2 class = "mb-3">Your saved recipes:</h2>
+  <br>
+  <br>
+  <br>
+  <br>
   <% @favorite_recipes.each do |favorite| %>
+    <%= link_to favorite.recipe do %>
     <div class="card-product mb-3">
       <%= cl_image_tag favorite.recipe.photo.key, height: 500, width: 500, crop: :fill %>
       <div class="card-product-infos">
-        <h2>
-          <%= link_to favorite.recipe.name, recipe_path(favorite.recipe), class: "text-decoration-none" %>
-        </h2>
-        <p><%= favorite.recipe.description %></p>
+        <h2><%= favorite.recipe.name %></h2>
+        <p><%= favorite.recipe.minutes %> Min. </p>
+        <p><%= favorite.recipe.nutritional_info %></p>
       </div>
     </div>
+  <% end  %>
   <% end %>
 </div>
