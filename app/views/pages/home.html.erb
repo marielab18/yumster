@@ -33,3 +33,13 @@
     </div>
   <% end %>
 </div>
+
+
+
+
+<%= simple_form_for :search, url: search_recipes_path, method: :get do |f| %>
+  <%= f.input :protein, as: :select, collection: @ingredients_proteins %>
+  <%= f.input :carb, as: :select, collection: @ingredients_carbs %>
+  <%= f.input :vegetable, as: :select, collection: @ingredients_vegetables %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>

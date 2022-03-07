@@ -5,8 +5,13 @@ Rails.application.routes.draw do
   resources :ingredients, only: [:show]
 
   resources :recipes, only: [:show, :update] do
+    collection do
+      get :search
+    end
     resources :favorites, only: [:create]
   end
+  
+  # REFACTOR THE LINE BELOW
   get "recipes/:id/selection", to: "recipes#selection", as: :selection
 
   resources :favorites, only: [:destroy]
