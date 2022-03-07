@@ -47,9 +47,14 @@ body {
   background: #FFCB77;
   box-shadow: inset 4px 0px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
+  font-family: Montserrat;
 }
 
-.finish-button {
-  margin-top: 10px;
-  margin-bottom: 20px;
+#finish-button{
+  margin: 10px auto 20px auto;
+  background-color: #FEF9EF;
+  border-color: #FFCB77;
+  border-radius: 10px;
+  border-width: 3px;
+  width: 70%;
 }
