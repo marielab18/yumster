@@ -4,6 +4,10 @@ body {
   padding: 0;
 }
 
+.blue-wrapper {
+  background-color: #227C9D;
+}
+
 .banner {
   height: 247px;
   padding-top: 15px;
@@ -42,8 +46,10 @@ body {
   padding-bottom: 30px;
   background: #FFCB77;
   box-shadow: inset 4px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
 }
 
 .finish-button {
   margin-top: 10px;
+  margin-bottom: 20px;
 }
