@@ -1,11 +1,11 @@
-// Specific CSS for your home-page
+// Specific CSS for your home-age
 body {
   min-height: 100vh;
   padding: 0;
 }
 
-.navbar {
-  background: #FEF9EF;
+.blue-wrapper {
+  background-color: #227C9D;
 }
 
 .banner {
@@ -16,6 +16,12 @@ body {
   box-shadow: inset 4px 0px 4px rgba(0, 0, 0, 0.25);
   border-bottom-left-radius: 100px;
   position: relative;
+  background-image: asset-url("yumster.png");
+  width: 100%;
+  background-size: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+
 }
 
 .banner img {
@@ -40,8 +46,10 @@ body {
   padding-bottom: 30px;
   background: #FFCB77;
   box-shadow: inset 4px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
 }
 
 .finish-button {
   margin-top: 10px;
+  margin-bottom: 20px;
 }
