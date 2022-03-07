@@ -1,5 +1,5 @@
-.card-image {
-  height: 400px;
+.show-image {
+  height: 300px;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -8,14 +8,15 @@
   border-bottom-right-radius: 50px;
 }
 
-.button-show {
+.button-icon {
   background-color: white;
   padding: 5px;
   border-radius: 5px;
 }
 
-.recipe-info {
+.container-instructions {
   background-color: #E5E5E5;
-  padding: 5px;
-  border-radius: 5px;
+  border-radius: 50px;
+  padding: 3%;
+  margin: 5%;
 }
