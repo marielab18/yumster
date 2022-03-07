@@ -1,3 +1,4 @@
+
   <div class="product-img">
     <div class="card-image" style="background-image: url('<%= cl_image_path @recipe.photo.key %>')">
       <div  class="d-flex justify-content-between">
@@ -26,19 +27,15 @@
 
     <div class= "swipe-btn">
       <div class="d-flex justify-content-center align-center">
-        <% if @recipe == Recipe.last %>
-          <%= link_to selection_path(Recipe.first) do %>
-            <%= image_tag "redx.png"%>
-          <% end %>
-        <% else %>
-          <%= link_to selection_path(@recipe.id.next) do %>
-            <%= image_tag "redx.png" %>
-          <% end %>
+
+        <%= link_to selection_path(@recipes.sample, { recipes: @recipes }) do %>
+          <%= image_tag "redx.png", height: 50, width: 50 %>
         <% end %>
 
-          <%= link_to recipe_path(@recipe) do %>
-            <%= image_tag "yes.png" %>
-          <% end %>
+        <%= link_to recipe_path(@recipe) do %>
+          <%= image_tag "yes.png", height: 50, width: 50 %>
+        <% end %>
+
       </div>
     </div>
   </div>
