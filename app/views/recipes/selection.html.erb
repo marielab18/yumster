@@ -28,16 +28,16 @@
       <div class="d-flex justify-content-center align-center">
         <% if @recipe == Recipe.last %>
           <%= link_to selection_path(Recipe.first) do %>
-            <%= image_tag "redx.png", height: 50, width: 50 %>
+            <%= image_tag "redx.png"%>
           <% end %>
         <% else %>
           <%= link_to selection_path(@recipe.id.next) do %>
-            <%= image_tag "redx.png", height: 50, width: 50 %>
+            <%= image_tag "redx.png" %>
           <% end %>
         <% end %>
 
           <%= link_to recipe_path(@recipe) do %>
-            <%= image_tag "yes.png", height: 50, width: 50 %>
+            <%= image_tag "yes.png" %>
           <% end %>
       </div>
     </div>
