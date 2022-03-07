@@ -15,9 +15,9 @@ class PagesController < ApplicationController
 
       @recipes = @ingredients_carbs & @ingredients_protein & @ingredients_vegetable
       if @recipes.present?
-        redirect_to selection_path(@recipes.first)
+        redirect_to selection_path(@recipes.sample)
       else
-        # Falta agregar con Java Script
+        # Java Script missing
         redirect_to root_path
       end
 

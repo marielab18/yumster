@@ -1,9 +1,9 @@
 <div  class="container-fluid p-0 my-3" >
   <div class="show-recipe">
     <div class="d-flex justify-content-between">
-      <%= link_to selection_path(@recipe) do %>
-        <%= image_tag "back_left.png", height: 20, width: 20 %>
-      <% end %>
+  <%= link_to root_path do %>
+          <%= image_tag "home.png", height: 30, width: 30, class:"button-icon" %>
+        <% end %>
       <h1 class = "text-center" class = "m-3" ><strong><%= @recipe.name %></strong></h1>
       <% if @favorite.nil? %>
         <%= link_to recipe_favorites_path(@recipe), method: :post do %>
