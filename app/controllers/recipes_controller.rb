@@ -12,7 +12,4 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @favorite = current_user.favorites.find_by(recipe: @recipe)
   end
-
-
-
 end
