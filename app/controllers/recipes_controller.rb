@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   def selection
+
     @recipe = Recipe.find(params[:id])
     @favorite = current_user.favorites.find_by(recipe: @recipe)
     #search with the ingredirents

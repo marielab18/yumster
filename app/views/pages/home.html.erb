@@ -12,39 +12,31 @@
   </div>
 <br>
 <br>
+<%= simple_form_for :search, url: root_path, method: :get do |f| %>
     <div class="ingredient-slot">
       <div class="row">
-        <div class= "col-12 d-flex align-item-center">
-          <h3>slot carbs</h3>
-        </div>
-          <% @ingredients_carbs.each do |ingredient| %>
-            <li><%= ingredient.name %></li>
-          <% end %>'
+        <%= f.input :carbs, collection: @ingredients_carbs %>
       </div>
     </div>
     <div class="ingredient-slot">
       <div class="row">
-        <div class= "col-12 d-flex align-item-center">
-          <h2>slot meat/plant protein</h2>
-        </div>
-        <% @ingredients_protein.each do |ingredient| %>
-          <li><%= ingredient.name %></li>
-        <% end %>
+        <%= f.input :protein, collection: @ingredients_protein %>
       </div>
     </div>
       <div class="ingredient-slot">
         <div class="row">
-          <div class= "col-12 d-flex align-item-center">
-            <h2>slot veggies</h2>
-          </div>
-          <% @ingredients_vegetable.each do |ingredient| %>
-            <li><%= ingredient.name %></li>
-          <% end %>
+          <%= f.input :vegetable, collection: @ingredients_vegetable %>
         </div>
       </div>
+  <div class= "col-12 d-flex justify-content-center">
+    <div class="finish-button">
+      <%= f.submit 'Search' %>
+    </div>
+  </div>
   <div class= "col-12 d-flex justify-content-center">
     <div class="finish-button">
       <a href="<%= selection_path(Recipe.first) %>" class="btn btn-warning" role="button">Go to recipe</a>
     </div>
   </div>
 </div>
+<% end %>
