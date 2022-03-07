@@ -1,4 +1,4 @@
-// Specific CSS for your home-page
+// Specific CSS for your home-age
 body {
   min-height: 100vh;
   padding: 0;
@@ -16,6 +16,12 @@ body {
   box-shadow: inset 4px 0px 4px rgba(0, 0, 0, 0.25);
   border-bottom-left-radius: 100px;
   position: relative;
+  background-image: asset-url("yumster.png");
+  width: 100%;
+  background-size: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+
 }
 
 .banner img {
