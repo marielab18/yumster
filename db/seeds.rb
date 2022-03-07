@@ -156,7 +156,7 @@ IngredientRecipe.create!(
 
 IngredientRecipe.create!(
   recipe_id: recipe1.id,
-  ingredient_id: ing4.id
+  ingredient_id: ing7.id
 )
 
 IngredientRecipe.create!(
@@ -176,7 +176,7 @@ IngredientRecipe.create!(
 
 IngredientRecipe.create!(
   recipe_id: recipe2.id,
-  ingredient_id: ing8.id
+  ingredient_id: ing3.id
 )
 
 
@@ -213,7 +213,7 @@ IngredientRecipe.create!(
 
 IngredientRecipe.create!(
   recipe_id: recipe5.id,
-  ingredient_id: ing5.id
+  ingredient_id: ing4.id
 )
 
 IngredientRecipe.create!(

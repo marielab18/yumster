@@ -1,8 +1,9 @@
 class RecipesController < ApplicationController
   def selection
-
+    @recipes = params[:recipes]
     @recipe = Recipe.find(params[:id])
     @favorite = current_user.favorites.find_by(recipe: @recipe)
+
     #search with the ingredirents
     #@recipes = Recipe.select(params)
   end
@@ -13,16 +14,20 @@ class RecipesController < ApplicationController
     @favorite = current_user.favorites.find_by(recipe: @recipe)
   end
 
-
   def search
     @recipes = Recipe.all
-    @recipes = @recipes.filter do |recipe| 
+    @recipes = @recipes.filter do |recipe|
       ingredients_ids = recipe.ingredients.pluck(:id)
       ingredients_ids.include?(query(:protein)) &&
-      ingredients_ids.include?(query(:carb)) && 
+      ingredients_ids.include?(query(:carb)) &&
       ingredients_ids.include?(query(:vegetable))
     end
-    redirect_to selection_path(@recipes.sample)
+    if @recipes.present?
+      redirect_to selection_path(@recipes.sample, { recipes: @recipes })
+    else
+      # Java Script missing
+      redirect_to root_path
+    end
   end
 
   private
@@ -30,6 +35,4 @@ class RecipesController < ApplicationController
   def query(category)
     params.require(:search)[category].to_i
   end
-
 end
-
