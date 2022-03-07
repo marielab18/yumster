@@ -1,42 +1,45 @@
 
-<div class="container-fluid p-0">
-      <%= render '/shared/navbar' %>
-  <div class="container-fluid p-0">
-    <div class="row">
-      <div class= "col-12">
-        <div class= "banner">
-            <%=image_tag "logo-yumster.svg", class: "logo"%>
-        </div>
+<div class= "blue-wrapper">
+  <div class="row">
+    <div class= "col-12">
+      <div class= "banner">
+
       </div>
     </div>
   </div>
-<br>
-<br>
-<%= simple_form_for :search, url: root_path, method: :get do |f| %>
-    <div class="ingredient-slot">
-      <div class="row">
-        <%= f.input :carbs, collection: @ingredients_carbs %>
-      </div>
-    </div>
-    <div class="ingredient-slot">
-      <div class="row">
-        <%= f.input :protein, collection: @ingredients_protein %>
-      </div>
-    </div>
+  <br>
+  <br>
+
+  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
       <div class="ingredient-slot">
         <div class="row">
-          <%= f.input :vegetable, collection: @ingredients_vegetable %>
+          <%= f.input :carbs, collection: @ingredients_carbs %>
         </div>
       </div>
-  <div class= "col-12 d-flex justify-content-center">
-    <div class="finish-button">
-      <%= f.submit 'Search' %>
+      <div class="ingredient-slot">
+        <div class="row">
+          <%= f.input :protein, collection: @ingredients_protein %>
+        </div>
+      </div>
+        <div class="ingredient-slot">
+          <div class="row">
+            <%= f.input :vegetable, collection: @ingredients_vegetable %>
+          </div>
+        </div>
+    <div class= "col-12 d-flex justify-content-center">
+      <div class="finish-button">
+        <%= f.submit 'Search' %>
+      </div>
     </div>
-  </div>
-  <div class= "col-12 d-flex justify-content-center">
-    <div class="finish-button">
-      <a href="<%= selection_path(Recipe.first) %>" class="btn btn-warning" role="button">Go to recipe</a>
-    </div>
-  </div>
+  <% end %>
 </div>
+
+
+
+
+<%= simple_form_for :search, url: search_recipes_path, method: :get do |f| %>
+  <%= f.input :protein, as: :select, collection: @ingredients_proteins %>
+  <%= f.input :carb, as: :select, collection: @ingredients_carbs %>
+  <%= f.input :vegetable, as: :select, collection: @ingredients_vegetables %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>

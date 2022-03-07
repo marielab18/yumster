@@ -23,8 +23,8 @@ class PagesController < ApplicationController
 
     else
       @ingredients_carbs = Ingredient.where(category: "Carb")
-      @ingredients_protein = Ingredient.where(category: "Protein")
-      @ingredients_vegetable = Ingredient.where(category: "Vegetable")
+      @ingredients_proteins = Ingredient.where(category: "Protein")
+      @ingredients_vegetables = Ingredient.where(category: "Vegetable")
     end
   end
 end

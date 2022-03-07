@@ -14,5 +14,22 @@ class RecipesController < ApplicationController
   end
 
 
+  def search
+    @recipes = Recipe.all
+    @recipes = @recipes.filter do |recipe| 
+      ingredients_ids = recipe.ingredients.pluck(:id)
+      ingredients_ids.include?(query(:protein)) &&
+      ingredients_ids.include?(query(:carb)) && 
+      ingredients_ids.include?(query(:vegetable))
+    end
+    redirect_to selection_path(@recipes.sample)
+  end
+
+  private
+
+  def query(category)
+    params.require(:search)[category].to_i
+  end
 
 end
+
