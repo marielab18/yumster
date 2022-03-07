@@ -13,6 +13,7 @@ class RecipesController < ApplicationController
     @favorite = current_user.favorites.find_by(recipe: @recipe)
   end
 
+
   def search
     @recipes = Recipe.all
     @recipes = @recipes.filter do |recipe| 
@@ -29,5 +30,6 @@ class RecipesController < ApplicationController
   def query(category)
     params.require(:search)[category].to_i
   end
+
 end
 
