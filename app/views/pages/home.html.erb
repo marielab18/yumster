@@ -11,7 +11,7 @@
   <br>
   <%= simple_form_for :search, url: search_recipes_path, method: :get do |f| %>
     <div class="ingredient-slot">
-      <%= f.input :protein, as: :select, collection: @ingredients_proteins %>
+      <%= f.input :protein, as: :select, collection: @ingredients_proteins, class: "ingredient-slot" %>
     </div>
     <div class="ingredient-slot">
       <%= f.input :carb, as: :select, collection: @ingredients_carbs %>
