@@ -28,7 +28,5 @@ def scrape(food, number = 5)
       minutes: html_doc.search('time').first.text.gsub(/\D/, '').to_i,
       nutritional_info: html_doc.search('table.key-value-blocks tr td').map(&:text).each_slice(2).map { |e| e.join(': ') }.join("\n"),
     }
-    # missing the filter_by_ingredients
-    # html_doc.search('.recipe__ingredients ul li').map(&:text).filter { |e| e.match? /chicken/ }
   end
 end
