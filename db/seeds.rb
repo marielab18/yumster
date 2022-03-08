@@ -46,42 +46,60 @@ build(ingredients, Ingredient)
 
 puts 'Start scraping'
 
-number_of_recipes = 1
+# trying new seeds
 
-#trying new seeds
-
+# Making 8 combinations of ["Rice", "Chicken", "Onion"]
 carb = Ingredient.find_by(name: "Rice")
 protein = Ingredient.find_by(name: "Chicken")
 vegetable = Ingredient.find_by(name: "Onion")
 ingredient = "#{carb.name}  #{protein.name}  #{vegetable.name}"
 
-puts 'Scraping recipes with ' + ingredient.capitalize
+  # puts 'Scraping recipes with ' + ingredient.capitalize
 chicken_recipes = scrape(ingredient, 8)
 
 build(chicken_recipes, Recipe) do |recipe|
-  ingredients = [ carb, protein, vegetable ]
-  puts "Adding ingredients #{ingredients.map(&:name)} to #{recipe.name}"
+  ingredients = [carb, protein, vegetable]
+  # puts "Adding ingredients #{ingredients.map(&:name)} to #{recipe.name}"
   recipe.ingredients << ingredients
 end
 
+# Making 8 combinations of ["Noodles", "Chicken", "Garlic"]
 
+carb = Ingredient.find_by(name: "Noodles")
+protein = Ingredient.find_by(name: "Chicken")
+vegetable = Ingredient.find_by(name: "Garlic")
+ingredient = "#{carb.name}  #{protein.name}  #{vegetable.name}"
 
-# create the combinations - by Andre
+  # puts 'Scraping recipes with ' + ingredient.capitalize
+chicken_recipes = scrape(ingredient, 8)
+
+build(chicken_recipes, Recipe) do |recipe|
+  ingredients = [carb, protein, vegetable]
+  # puts "Adding ingredients #{ingredients.map(&:name)} to #{recipe.name}"
+  recipe.ingredients << ingredients
+end
+
+# create 1 combination of each ingredient - by Andre
+
+# get all ingredients grouped by the category
+
+number_of_recipes = 1
+ingredients_grouped_by_category = Ingredient.all.group_by(&:category)
+
 ingredients_grouped_by_category['Carb'].each do |carb|
   ingredients_grouped_by_category['Protein'].each do |protein|
     ingredients_grouped_by_category['Vegetable'].each do |vegetable|
       # for each carb protein and vegetable, scrape it and build it
       ingredient = "#{carb.name}  #{protein.name}  #{vegetable.name}"
 
-      puts 'Scraping recipes with ' + ingredient.capitalize
+      # puts 'Scraping recipes with ' + ingredient.capitalize
       chicken_recipes = scrape(ingredient, number_of_recipes)
 
       build(chicken_recipes, Recipe) do |recipe|
-        ingredients = [ carb, protein, vegetable ]
-        puts "Adding ingredients #{ingredients.map(&:name)} to #{recipe.name}"
+        ingredients = [carb, protein, vegetable]
+        # puts "Adding ingredients #{ingredients.map(&:name)} to #{recipe.name}"
         recipe.ingredients << ingredients
       end
-
     end
   end
 end
