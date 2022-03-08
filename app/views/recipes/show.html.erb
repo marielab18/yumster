@@ -2,18 +2,25 @@
   <div class="show-image" style="background-image: url('<%= cl_image_path @recipe.photo.key %>')">
     <div class="d-flex justify-content-between">
 
+      <%# 1. FLEXBOX: Back button back to selecion page %>
       <%= link_to selection_path(@recipe, { recipes: @recipes }) do %>
-        <%= image_tag "back_left.png", height: 30, width: 30, class:"button-show" %>
+        <%= image_tag "back_left.png", height: 35, width: 35, class:"button-show" %>
       <% end %>
 
+      <%# 2. FLEXBOX: Showing the Recipe title %>
       <h1 class = "text-center" class = "m-3" ><strong><%= @recipe.name %></strong></h1>
 
+      <%# 3. FLEXBOX: Bookmark - save a favorite recipe <--> delete a favorite recipe in the dashboard %>
       <% if @favorite.nil? %>
+        <%# 3.1 Flexbox: If is not save in the dasboard, we show the unmark bookmark %>
         <%= link_to recipe_favorites_path(@recipe, { recipes: @recipes }), method: :post do %>
-          <%= image_tag "ribbon1.png", height: 30, width: 30, class:"button-show"%>
+          <%= image_tag "ribbon.png", height: 35, width: 35, class:"button-show"%>
         <% end %>
       <% else %>
-        <p><%= link_to "🗑", favorite_path(@favorite), method: :delete, class:"button-show" %></p>
+        <%# 3.2 Flexbox: If we have a favorite (save in the dashboard), we show the  %>
+        <%= link_to favorite_path(@favorite), method: :delete do %>
+          <%= image_tag "ribbon1.png", height: 35, width: 35, class:"button-icon" %>
+        <% end %>
       <% end %>
     </div>
   </div>
