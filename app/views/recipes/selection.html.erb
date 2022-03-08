@@ -1,6 +1,6 @@
 
   <div class="product-img">
-    <div class="card-image" style="background-image: url('<%= cl_image_path @recipe.photo.key %>')">
+    <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(255,255,255,0.5)), url('<%= cl_image_path @recipe.photo.key %>')">
       <div  class="d-flex justify-content-between">
         <%= link_to root_path do %>
           <%= image_tag "home.png", height: 35, width: 35, class:"button-icon" %>
