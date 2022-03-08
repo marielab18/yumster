@@ -6,10 +6,10 @@ class PagesController < ApplicationController
       @ingredients_carbs = Recipe.joins(:ingredients).where(:ingredients => { :id =>
         params[:search][:carbs],
       })
-      @ingredients_protein = Recipe.joins(:ingredients).where(:ingredients => { :id =>
+      @ingredients_proteins = Recipe.joins(:ingredients).where(:ingredients => { :id =>
         params[:search][:protein],
       })
-      @ingredients_vegetable = Recipe.joins(:ingredients).where(:ingredients => { :id =>
+      @ingredients_vegetables = Recipe.joins(:ingredients).where(:ingredients => { :id =>
         params[:search][:vegetable],
       })
 
