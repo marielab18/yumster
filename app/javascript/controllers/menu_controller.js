@@ -6,9 +6,12 @@ export default class extends Controller {
 
   expand(event) {
     this.menuTarget.classList.add("active")
+    const homepage = document.getElementById("homepage")
+    homepage.classList.add("homepage-active")
   }
 
   collapse(event) {
     this.menuTarget.classList.remove("active")
+    homepage.classList.remove("homepage-active")
   }
 }

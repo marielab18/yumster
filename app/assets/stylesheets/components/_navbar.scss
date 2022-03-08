@@ -13,10 +13,14 @@
   padding: 10px;
   font-size: 24px;
   box-shadow: -5px 0px 10px 0px black;
+  background-image: asset-url("hamburi.png");
+  width: 100%;
+  background-size: 140%;
+  background-position: center;
+  background-repeat: no-repeat;
 
   a {
     color: white;
-    font-stretch: wider;
     font-family: $headers-font;
     &:hover {
       color: #E67E22;
@@ -26,8 +30,6 @@
   ul {
     list-style: none;
     color: white;
-    font-weight: bolder;
-    font-stretch: wider;
     font-family: $headers-font;
     &:hover {
       color: #E67E22;
@@ -46,6 +48,7 @@
   z-index: 10;
   height: 100%;
   width: 50%;
+
 }
 
 .navbar-toggler {
@@ -68,4 +71,12 @@ body {
   line-height: 2;
   font-size: xx-large;
   margin-right: 20px;
+}
+
+.homepage {
+  transition: 1s ease all;
+}
+
+.homepage-active {
+filter: blur(4px);
 }
