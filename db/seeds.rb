@@ -1,12 +1,25 @@
 require "open-uri"
+require_relative 'scraper'
+
 
 lorem = '
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ipsum id saepe eligendi ducimus. Corrupti, perspiciatis quo ex distinctio ipsam, dolorum nihil porro, placeat recusandae ad accusantium illo. Sint, soluta?
 '
-# Favorite.destroy_all
+
+def build(items, model_class)
+  items.each do |item|
+    puts "Building #{item[:name]} #{model_class}"
+    image_url = item.delete(:image_url)
+    model = model_class.create!(item)
+    file = URI.open(image_url)
+    model.photo.attach(io: file, filename: "#{item[:name].downcase}.png", content_type: 'image/png')
+    yield(model) if block_given?
+  end
+end
+
+Favorite.destroy_all
 Ingredient.destroy_all
 IngredientRecipe.destroy_all
-
 Recipe.destroy_all
 User.destroy_all
 
@@ -19,218 +32,53 @@ User.create!(
 
 puts 'Create Ingredients'
 
-ing1 = Ingredient.create!(
-  name: 'Chicken',
-  category: 'Protein'
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646317382/chicken_mmehqa.png')
-ing1.photo.attach(io: file, filename: 'chicken.png', content_type: 'image/png')
+ingredients = [
+  { name: 'Noodles', category: 'Carb', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646318741/development/massa_tpwggn.png' },
+  { name: 'Rice', category: 'Carb', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646319962/development/rice_erdar0.png' },
+  { name: 'Chicken', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646317382/chicken_mmehqa.png' },
+  { name: 'Shrimp', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320139/development/shrimp_yh4iir.png' },
+  { name: 'Beef', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320828/development/vaquinha_wvsu1s.png' },
+  { name: 'Salmon', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321716/development/salmon_ocnmrr.png' },
+  { name: 'Carrot', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320914/development/carrot_iacktx.png' },
+  { name: 'Brocolli', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321046/development/broccoli_sumyza.png' },
+  { name: 'Onion', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321329/development/onion_nsck5e.png' },
+  { name: 'Garlic', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321523/development/garlic_dldlss.png' },
+]
 
-ing2 = Ingredient.create!(
-  name: 'Noodles',
-  category: 'Carb'
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646318741/development/massa_tpwggn.png')
-ing2.photo.attach(io: file, filename: 'massa.png', content_type: 'image/png')
+build(ingredients, Ingredient)
 
-ing3 = Ingredient.create!(
-  name: 'Rice',
-  category: 'Carb'
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646319962/development/rice_erdar0.png')
-ing3.photo.attach(io: file, filename: 'rice.png', content_type: 'image/png')
+################ SCRAPING START ################
 
+puts 'Start scraping'
+number_of_recipes = 1
+# get all ingredients grouped by the category
+ingredients_grouped_by_category =  Ingredient.all.group_by(&:category)
 
-ing4 = Ingredient.create!(
-  name: 'Shrimp',
-  category: 'Protein'
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320139/development/shrimp_yh4iir.png')
-ing4.photo.attach(io: file, filename: 'shrimp.png', content_type: 'image/png')
+# create the combinations
+ingredients_grouped_by_category['Carb'].each do |carb|
+  ingredients_grouped_by_category['Protein'].each do |protein|
+    ingredients_grouped_by_category['Vegetable'].each do |vegetable|
+      # for each carb protein and vegetable, scrape it and build it
+      ingredient = "#{carb.name}  #{protein.name}  #{vegetable.name}"
 
-ing5 = Ingredient.create!(
-  name: 'Beef',
-  category: 'Protein'
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320828/development/vaquinha_wvsu1s.png')
-ing5.photo.attach(io: file, filename: 'vaquinha.png', content_type: 'image/png')
+      puts 'Scraping recipes with ' + ingredient.capitalize
+      chicken_recipes = scrape(ingredient, number_of_recipes)
 
-ing6 = Ingredient.create!(
-  name: 'Carrot',
-  category: 'Vegetable'
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320914/development/carrot_iacktx.png')
-ing6.photo.attach(io: file, filename: 'carrot.png', content_type: 'image/png')
+      build(chicken_recipes, Recipe) do |recipe|
+        ingredients = [ carb, protein, vegetable ]
+        puts "Adding ingredients #{ingredients.map(&:name)} to #{recipe.name}"
+        recipe.ingredients << ingredients
+      end
 
-ing7 = Ingredient.create!(
-  name: 'Brocolli',
-  category: 'Vegetable'
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321046/development/broccoli_sumyza.png')
-ing7.photo.attach(io: file, filename: 'broccoli.png', content_type: 'image/png')
+    end
+  end
+end
 
-
-ing8 = Ingredient.create!(
-  name: 'Onion',
-  category: 'Vegetable'
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321329/development/onion_nsck5e.png')
-ing8.photo.attach(io: file, filename: 'onion.png', content_type: 'image/png')
-
-ing9 = Ingredient.create!(
-  name: 'Garlic',
-  category: 'Vegetable'
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321523/development/garlic_dldlss.png')
-ing9.photo.attach(io: file, filename: 'garlic.png', content_type: 'image/png')
-
-
-ing10 = Ingredient.create!(
-  name: 'Salmon',
-  category: 'Protein'
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321716/development/salmon_ocnmrr.png')
-ing10.photo.attach(io: file, filename: 'salmon.png', content_type: 'image/png')
-
-
-puts 'Create Recipes'
-
-recipe1 = Recipe.create!(
-  name: 'Curly 🐔 Chicken',
-  description: 'Not chicken nuggets, but great',
-  minutes: '10Min',
-  nutritional_info: '500 Kcal',
-  instructions: lorem
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646322010/development/curlychicken_ubqfxe.png')
-recipe1.photo.attach(io: file, filename: 'curlychicken.png', content_type: 'image/png')
-
-recipe2 = Recipe.create!(
-  name: 'Spicy Chicken',
-  description: 'Winner winner chicken dinner',
-  minutes: '15Min',
-  nutritional_info: '500 Kcal',
-  instructions: lorem
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646322242/development/spicychicken_gwlhdw.jpg')
-recipe2.photo.attach(io: file, filename: 'spicychicken.png', content_type: 'image/png')
-
-recipe3 = Recipe.create!(
-  name: 'Shrimp Pasta',
-  description: 'Yummy quick pasta',
-  minutes: '10Min',
-  nutritional_info: '500 Kcal',
-  instructions: lorem
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646322458/development/garlicshrimppasta_qiltqd.jpg')
-recipe3.photo.attach(io: file, filename: 'garlicshrimppasta.png', content_type: 'image/png')
-
-
-recipe4 = Recipe.create!(
-  name: 'Ceasar Salad',
-  description: 'Not chicken nuggets, but healthy',
-  minutes: '10Min',
-  nutritional_info: '300 Kcal',
-  instructions: lorem
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646322819/development/caesarsalad_lruxdq.jpg')
-recipe4.photo.attach(io: file, filename: 'caesarsalad.png', content_type: 'image/png')
-
-
-recipe5 = Recipe.create!(
-  name: 'Beef Soup',
-  description: 'Hong Kong Dim-like',
-  minutes: '20Min',
-  nutritional_info: '500 Kcal',
-  instructions: lorem
-)
-file = URI.open('https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646322982/development/beefsoup_bp5rn8.jpg')
-recipe5.photo.attach(io: file, filename: 'beefsoup.png', content_type: 'image/png')
-
-puts 'Connect Recipe to Ingredients'
-
-IngredientRecipe.create!(
-  recipe_id: recipe1.id,
-  ingredient_id: ing1.id
-)
-
-IngredientRecipe.create!(
-  recipe_id: recipe1.id,
-  ingredient_id: ing7.id
-)
-
-IngredientRecipe.create!(
-  recipe_id: recipe1.id,
-  ingredient_id: ing3.id
-)
-
-IngredientRecipe.create!(
-  recipe_id: recipe2.id,
-  ingredient_id: ing1.id
-)
-
-IngredientRecipe.create!(
-  recipe_id: recipe2.id,
-  ingredient_id: ing6.id
-)
-
-IngredientRecipe.create!(
-  recipe_id: recipe2.id,
-  ingredient_id: ing3.id
-)
-
-
-IngredientRecipe.create!(
-  recipe_id: recipe3.id,
-  ingredient_id: ing4.id
-)
-
-IngredientRecipe.create!(
-  recipe_id: recipe3.id,
-  ingredient_id: ing9.id
-)
-
-IngredientRecipe.create!(
-  recipe_id: recipe3.id,
-  ingredient_id: ing2.id
-)
-
-
-IngredientRecipe.create!(
-  recipe_id: recipe4.id,
-  ingredient_id: ing4.id
-)
-
-IngredientRecipe.create!(
-  recipe_id: recipe4.id,
-  ingredient_id: ing9.id
-)
-
-IngredientRecipe.create!(
-  recipe_id: recipe4.id,
-  ingredient_id: ing2.id
-)
-
-IngredientRecipe.create!(
-  recipe_id: recipe5.id,
-  ingredient_id: ing4.id
-)
-
-IngredientRecipe.create!(
-  recipe_id: recipe5.id,
-  ingredient_id: ing9.id
-)
-
-IngredientRecipe.create!(
-  recipe_id: recipe5.id,
-  ingredient_id: ing2.id
-)
-# or this syntax
-# Recipe.first.ingredients << Ingredient.last
+################ SCRAPING END ################
 
 puts 'Create Favorites'
 
-# Favorite.create!(
-#   user: User.first,
-#   recipe: Recipe.first
-# )
+Favorite.create!(
+  user: User.first,
+  recipe: Recipe.first
+)
