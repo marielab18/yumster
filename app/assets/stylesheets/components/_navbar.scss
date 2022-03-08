@@ -12,11 +12,15 @@
   transition: 1s ease all;
   padding: 10px;
   font-size: 24px;
+  box-shadow: -5px 0px 10px 0px black;
 
   a {
     color: white;
     font-stretch: wider;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: $headers-font;
+    &:hover {
+      color: #E67E22;
+    }
   }
 
   ul {
@@ -24,7 +28,10 @@
     color: white;
     font-weight: bolder;
     font-stretch: wider;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: $headers-font;
+    &:hover {
+      color: #E67E22;
+    }
   }
 }
 
