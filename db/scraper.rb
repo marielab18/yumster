@@ -20,8 +20,9 @@ def scrape(food, number = 5)
 
   recipes.map do |recipe|
     html_doc = fetch "https://www.bbcgoodfood.com" + recipe[:url]
+    image_selector =  selector = "#__next > div.default-layout > main > div > section > div > div.post-header__image-container > div > div > picture > img"
     {
-      image_url: html_doc.search('img.image__img').first.attributes['src'].value,
+      image_url: html_doc.search(selector).first.attributes['src'].value,
       name: recipe[:name],
       instructions: html_doc.search('.recipe__method-steps .grouped-list__list li div').map(&:text).join("\n"),
       description: html_doc.search('.post-header__body .editor-content').text,
