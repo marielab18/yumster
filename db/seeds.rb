@@ -47,12 +47,7 @@ ingredients = [
 
 build(ingredients, Ingredient)
 
-puts 'Create Favorites'
-
-Favorite.create!(
-  user: User.first,
-  recipe: Recipe.first
-)
+################ SCRAPING START ################
 
 puts 'Start scraping'
 
@@ -79,3 +74,11 @@ ingredients_grouped_by_category['Carb'].each do |carb|
   end
 end
 
+################ SCRAPING END ################
+
+puts 'Create Favorites'
+
+Favorite.create!(
+  user: User.first,
+  recipe: Recipe.first
+)
