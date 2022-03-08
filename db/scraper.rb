@@ -6,12 +6,12 @@ def fetch(url)
   Nokogiri::HTML(html_file)
 end
 
-def scrape(food)
+def scrape(food, number = 5)
   url = "https://www.bbcgoodfood.com/search/recipes/page/2?q=#{food}&sort=-relevance"
   html_doc = fetch url
 
   recipes = []
-  html_doc.search(".standard-card-new__article-title").each do |element|
+  html_doc.search(".standard-card-new__article-title").first(number).each do |element|
     recipes << {
       name: element.text.strip,
       url: element.attribute("href").value
