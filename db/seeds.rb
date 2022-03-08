@@ -50,7 +50,7 @@ build(ingredients, Ingredient)
 ################ SCRAPING START ################
 
 puts 'Start scraping'
-
+number_of_recipes = 1
 # get all ingredients grouped by the category
 ingredients_grouped_by_category =  Ingredient.all.group_by(&:category)
 
@@ -62,7 +62,7 @@ ingredients_grouped_by_category['Carb'].each do |carb|
       ingredient = "#{carb.name}  #{protein.name}  #{vegetable.name}"
 
       puts 'Scraping recipes with ' + ingredient.capitalize
-      chicken_recipes = scrape(ingredient, 1)
+      chicken_recipes = scrape(ingredient, number_of_recipes)
 
       build(chicken_recipes, Recipe) do |recipe|
         ingredients = [ carb, protein, vegetable ]

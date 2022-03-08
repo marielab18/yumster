@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2022_03_03_110840) do
     t.bigint "recipe_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "comment"
     t.index ["recipe_id"], name: "index_favorites_on_recipe_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
