@@ -3,15 +3,15 @@
     <div class="card-image" style="background-image: url('<%= cl_image_path @recipe.photo.key %>')">
       <div  class="d-flex justify-content-between">
         <%= link_to root_path do %>
-          <%= image_tag "home.png", height: 30, width: 30, class:"button-icon" %>
+          <%= image_tag "home.png", height: 35, width: 35, class:"button-icon" %>
         <% end %>
         <% if @favorite.nil? %>
           <%= link_to recipe_favorites_path(@recipe), method: :post do %>
-            <%= image_tag "ribbon.png", height: 28, width: 28, class:"button-icon" %>
+            <%= image_tag "ribbon.png", height: 35, width: 35, class:"button-icon" %>
           <% end %>
         <% else %>
         <%= link_to favorite_path(@favorite), method: :delete do %>
-          <%= image_tag "ribbon1.png", height: 28, width: 28, class:"button-icon" %>
+          <%= image_tag "ribbon1.png", height: 35, width: 35, class:"button-icon" %>
         <% end %>
         <% end %>
       </div>
