@@ -9,16 +9,16 @@
   </div>
   <br>
   <br>
-
-<%= simple_form_for :search, url: search_recipes_path, method: :get do |f| %>
-<div class="ingredient-slot">
-  <%= f.input :protein, as: :select, collection: @ingredients_proteins %>
-  </div>
-  <div class="ingredient-slot">
-  <%= f.input :carb, as: :select, collection: @ingredients_carbs %>
-  </div>
-  <div class="ingredient-slot">
-  <%= f.input :vegetable, as: :select, collection: @ingredients_vegetables %>
-  </div>
-  <%= submit_tag "Search", class: "finish-button" %>
-<% end %>
+  <%= simple_form_for :search, url: search_recipes_path, method: :get do |f| %>
+    <div class="ingredient-slot">
+      <%= f.input :protein, as: :select, collection: @ingredients_proteins %>
+    </div>
+    <div class="ingredient-slot">
+      <%= f.input :carb, as: :select, collection: @ingredients_carbs %>
+    </div>
+    <div class="ingredient-slot">
+      <%= f.input :vegetable, as: :select, collection: @ingredients_vegetables %>
+    </div>
+     <%= submit_tag "Search", id: "finish-button" %>
+  <% end %>
+</div>
