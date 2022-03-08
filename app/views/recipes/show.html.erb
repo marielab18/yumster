@@ -1,12 +1,15 @@
 <div class="show-recipe">
   <div class="show-image" style="background-image: url('<%= cl_image_path @recipe.photo.key %>')">
     <div class="d-flex justify-content-between">
-      <%= link_to selection_path(@recipe) do %>
+
+      <%= link_to selection_path(@recipe, { recipes: @recipes }) do %>
         <%= image_tag "back_left.png", height: 30, width: 30, class:"button-show" %>
       <% end %>
 
+      <h1 class = "text-center" class = "m-3" ><strong><%= @recipe.name %></strong></h1>
+
       <% if @favorite.nil? %>
-        <%= link_to recipe_favorites_path(@recipe), method: :post do %>
+        <%= link_to recipe_favorites_path(@recipe, { recipes: @recipes }), method: :post do %>
           <%= image_tag "ribbon1.png", height: 30, width: 30, class:"button-show"%>
         <% end %>
       <% else %>
@@ -14,11 +17,14 @@
       <% end %>
     </div>
   </div>
-  <h4 class = "m-3">Cooking instructions:</h4>
 
-  <% @recipe.ingredient_recipes.each do |ing| %>
-    <p class = "text-center" ><%= ing.ingredient.name %></p>
-  <% end %>
+    <h4 class = "m-3">Cooking instructions:</h4>
+  <div class= "container-instructions">
 
-  <p class = "m-3"><%= @recipe.instructions %></p>
+    <% @recipe.ingredient_recipes.each do |ing| %>
+      <p class = "text-center" ><%= ing.ingredient.name %></p>
+    <% end %>
+
+    <p class = "m-3"><%= @recipe.instructions %></p>
+  </div>
 </div>

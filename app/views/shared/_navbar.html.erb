@@ -1,18 +1,18 @@
-<div class="navbar navbar-sm navbar-light navbar-lewagon container-fluid">
-  <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-    <% end %>
+  <div class="navbar" data-controller="menu">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+
+ <button data-action="click->menu#expand" class="navbar-toggler">
+     <i class="fas fa-bars"></i>
     </button>
+    <div class="menu" data-menu-target="menu">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
+
+      <ul>
+        <span data-action="click->menu#collapse">X</span>
+ <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
-            <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
+            <%= link_to "Home", "#", class: "dropdown-item" %>
+            <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </li>
         <% else %>
@@ -24,4 +24,3 @@
       </ul>
     </div>
   </div>
-</div>

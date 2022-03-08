@@ -6,18 +6,18 @@ class PagesController < ApplicationController
       @ingredients_carbs = Recipe.joins(:ingredients).where(:ingredients => { :id =>
         params[:search][:carbs],
       })
-      @ingredients_protein = Recipe.joins(:ingredients).where(:ingredients => { :id =>
+      @ingredients_proteins = Recipe.joins(:ingredients).where(:ingredients => { :id =>
         params[:search][:protein],
       })
-      @ingredients_vegetable = Recipe.joins(:ingredients).where(:ingredients => { :id =>
+      @ingredients_vegetables = Recipe.joins(:ingredients).where(:ingredients => { :id =>
         params[:search][:vegetable],
       })
 
       @recipes = @ingredients_carbs & @ingredients_protein & @ingredients_vegetable
       if @recipes.present?
-        redirect_to selection_path(@recipes.first)
+        redirect_to selection_path(@recipes.sample)
       else
-        # Falta agregar con Java Script
+        # Java Script missing
         redirect_to root_path
       end
 

@@ -6,7 +6,8 @@ class FavoritesController < ApplicationController
     @favorite.recipe = @recipe
     @favorite.user = current_user
     @favorite.save
-    redirect_to selection_path(@recipe)
+
+    redirect_to recipe_path(@recipe)
   end
 
   def dashboard
@@ -17,10 +18,11 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(params[:id])
     @recipe = @favorite.recipe
     @favorite.destroy
-    redirect_to selection_path(@recipe)
+    redirect_to recipe_path(@recipe)
   end
 
   private
+
   def favorite_params
     params.require(:favorite).permit(:user_id, :recipe_id)
   end

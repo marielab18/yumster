@@ -161,7 +161,7 @@ ingredients_grouped_by_category['Carb'].each do |carb|
         puts "Adding ingredients #{ingredients.map(&:name)} to #{recipe.name}"
         recipe.ingredients << ingredients
       end
-      
+
     end
   end
 end
