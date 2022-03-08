@@ -45,11 +45,28 @@ build(ingredients, Ingredient)
 ################ SCRAPING START ################
 
 puts 'Start scraping'
-number_of_recipes = 1
-# get all ingredients grouped by the category
-ingredients_grouped_by_category =  Ingredient.all.group_by(&:category)
 
-# create the combinations
+number_of_recipes = 1
+
+#trying new seeds
+
+carb = Ingredient.find_by(name: "Rice")
+protein = Ingredient.find_by(name: "Chicken")
+vegetable = Ingredient.find_by(name: "Onion")
+ingredient = "#{carb.name}  #{protein.name}  #{vegetable.name}"
+
+puts 'Scraping recipes with ' + ingredient.capitalize
+chicken_recipes = scrape(ingredient, 8)
+
+build(chicken_recipes, Recipe) do |recipe|
+  ingredients = [ carb, protein, vegetable ]
+  puts "Adding ingredients #{ingredients.map(&:name)} to #{recipe.name}"
+  recipe.ingredients << ingredients
+end
+
+
+
+# create the combinations - by Andre
 ingredients_grouped_by_category['Carb'].each do |carb|
   ingredients_grouped_by_category['Protein'].each do |protein|
     ingredients_grouped_by_category['Vegetable'].each do |vegetable|
