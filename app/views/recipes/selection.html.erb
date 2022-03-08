@@ -15,6 +15,10 @@
         <% end %>
         <% end %>
       </div>
+      <div class="recipe-name">
+        <h1><%= @recipe.name %></h1>
+      </div>
+
     </div>
       <div  class= "d-flex justify-content-center">
         <div class= "recipe-minutes">
@@ -25,7 +29,6 @@
         </div>
       </div>
 
-    <h1 class= "text-center"><%= @recipe.name %></h1>
     <p class= "text-center"><%= @recipe.description %></p>
 
     <div class= "swipe-btn">
