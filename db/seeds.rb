@@ -13,6 +13,7 @@ def build(items, model_class)
     model = model_class.create!(item)
     file = URI.open(image_url)
     model.photo.attach(io: file, filename: "#{item[:name].downcase}.png", content_type: 'image/png')
+    yield(model) if block_given?
   end
 end
 
@@ -149,10 +150,18 @@ ingredients_grouped_by_category =  Ingredient.all.group_by(&:category)
 ingredients_grouped_by_category['Carb'].each do |carb|
   ingredients_grouped_by_category['Protein'].each do |protein|
     ingredients_grouped_by_category['Vegetable'].each do |vegetable|
+      # for each carb protein and vegetable, scrape it and build it
       ingredient = "#{carb.name}  #{protein.name}  #{vegetable.name}"
+
       puts 'Scraping recipes with ' + ingredient.capitalize
       chicken_recipes = scrape(ingredient, 1)
-      build(chicken_recipes, Recipe)
+
+      build(chicken_recipes, Recipe) do |recipe|
+        ingredients = [ carb, protein, vegetable ]
+        puts "Adding ingredients #{ingredients.map(&:name)} to #{recipe.name}"
+        recipe.ingredients << ingredients
+      end
+      
     end
   end
 end
