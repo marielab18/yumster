@@ -142,7 +142,18 @@ Favorite.create!(
 
 puts 'Start scraping'
 
-ingredient = 'chicken'
-puts 'Scraping recipes with ' + ingredient.capitalize
-chicken_recipes = scrape(ingredient)
-build(chicken_recipes, Recipe)
+# get all ingredients grouped by the category
+ingredients_grouped_by_category =  Ingredient.all.group_by(&:category)
+
+# create the combinations
+ingredients_grouped_by_category['Carb'].each do |carb|
+  ingredients_grouped_by_category['Protein'].each do |protein|
+    ingredients_grouped_by_category['Vegetable'].each do |vegetable|
+      ingredient = "#{carb.name}  #{protein.name}  #{vegetable.name}"
+      puts 'Scraping recipes with ' + ingredient.capitalize
+      chicken_recipes = scrape(ingredient, 1)
+      build(chicken_recipes, Recipe)
+    end
+  end
+end
+
