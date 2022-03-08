@@ -9,7 +9,6 @@
   </div>
   <br>
   <br>
-
   <%= simple_form_for :search, url: search_recipes_path, method: :get do |f| %>
     <div class="ingredient-slot">
       <%= f.input :protein, as: :select, collection: @ingredients_proteins %>
@@ -23,4 +22,3 @@
      <%= submit_tag "Search", id: "finish-button" %>
   <% end %>
 </div>
-
