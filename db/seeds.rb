@@ -1,11 +1,6 @@
 require "open-uri"
 require_relative 'scraper'
 
-
-lorem = '
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ipsum id saepe eligendi ducimus. Corrupti, perspiciatis quo ex distinctio ipsam, dolorum nihil porro, placeat recusandae ad accusantium illo. Sint, soluta?
-'
-
 def build(items, model_class)
   items.each do |item|
     puts "Building #{item[:name]} #{model_class}"
