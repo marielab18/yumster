@@ -40,13 +40,6 @@
   }
 }
 
-.homepage {
-  transition: 1s ease all;
-}
-
-.homepage-active {
-filter: blur(4px);
-}
 
 .menu.active {
   transform: translate(0, 0);

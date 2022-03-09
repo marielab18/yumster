@@ -4,11 +4,8 @@ body {
   padding: 0;
 }
 
-.blue-wrapper {
-  background-color: #227C9D;
-  background-repeat: no-repeat;
-  height: 100vh;
-  position: relative;
+.container {
+  padding: 5px;
 }
 
 .hamster-button {
@@ -60,7 +57,7 @@ body {
 }
 
 #finish-button{
-  margin: 20px auto 30px auto;
+  margin: 20px auto 0 auto;
   align-self: center;
   background-color: #FEF9EF;
   border-color: #FFCB77;
@@ -73,9 +70,10 @@ body {
 .search{
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: relative;
   width: 100%;
   z-index: 1;
+  padding-bottom: 48px;
 
   fieldset {
     height: 100%;
@@ -129,4 +127,18 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.homepage {
+  transition: 1s ease all;
+  background-image: asset-url("chasingham.png");
+  height: 100%;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position-y: 102%;
+  background-position-x: 82%;
+}
+
+.homepage-active {
+filter: blur(4px);
 }
