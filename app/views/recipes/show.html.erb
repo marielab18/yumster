@@ -21,23 +21,22 @@
         <% end %>
       <% end %>
     </div>
-      <div class="d-flex justify-content-between">
-        <div class="recipe-title">
-          <%= link_to selection_path(@recipe, { recipes: @recipes }) do %>
-            <%= image_tag "back_left.png", height: 35, width: 35, class:"button-back" %>
-          <% end %>
-          <h1><%= @recipe.name %></h1>
-        </div>
+
+      <div class= "recipe-title">
+        <%= link_to selection_path(@recipe, { recipes: @recipes }) do %>
+          <%= image_tag "back_left.png", height: 35, width: 35, class:"button-back" %>
+        <% end %>
+        <h1><%= @recipe.name %></h1>
       </div>
   </div>
 
-    <h4 class = "m-3">Cooking instructions:</h4>
+    <h4 class = "m-4">Cooking instructions:</h4>
 
   <div class= "container-instructions">
 
     <div class="d-flex justify-content-between">
       <% @recipe.ingredient_recipes.each do |ing| %>
-        <%= cl_image_tag ing.ingredient.photo.key, height: 100, width: 100, crop: :fill %>
+        <%= cl_image_tag ing.ingredient.photo.key, height: 55, width: 55, crop: :fill %>
       <% end %>
     </div>
 
