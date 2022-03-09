@@ -7,10 +7,13 @@ export default class extends Controller {
   expand(event) {
     this.menuTarget.classList.add("active")
     this.navbarTarget.style.height = "100%"
+    const homepage = document.getElementById("homepage")
+    homepage.classList.add("homepage-active")
   }
 
   collapse(event) {
     this.menuTarget.classList.remove("active")
     setTimeout(() => this.navbarTarget.style.height = "10%", 500)
+    homepage.classList.remove("homepage-active")
   }
 }
