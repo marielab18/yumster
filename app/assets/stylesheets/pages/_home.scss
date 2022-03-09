@@ -14,8 +14,8 @@ body {
 .hamster-button {
   width: 50%;
   position: absolute;
-  right: 16px;
-  bottom: 23px;
+  right: 18px;
+  bottom: 3px;
 }
 .banner {
   height: 247px;
@@ -30,7 +30,6 @@ body {
   background-size: 90%;
   background-position: center;
   background-repeat: no-repeat;
-
 }
 
 .banner img {
@@ -54,26 +53,22 @@ body {
   background: #FFCB77;
   box-shadow: inset 4px 0px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
-  font-family: Baloo 2;
+  font-family: $headers-font;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 22px;
   color: #227C9D;
 }
 
 #finish-button{
-  margin: 51px auto 30px auto;
+  margin: 20px auto 30px auto;
   align-self: center;
   background-color: #FEF9EF;
   border-color: #FFCB77;
   border-radius: 30px;
   border-width: 3px;
-
   width: 27%;
   height: 40pt;
-
-
   color: #227C9D;
-
 }
 .search{
   display: flex;
