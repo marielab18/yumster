@@ -1,24 +1,74 @@
-<div class="homepage" id="homepage">
-  <div class= "blue-wrapper">
-    <div class="row">
-      <div class= "col-12">
-        <div class= "banner">
-
-        </div>
+<div class= "blue-wrapper">
+  <div class="row">
+    <div class= "col-12">
+      <div class= "banner">
+      
       </div>
     </div>
+  </div>
   <br>
   <br>
-  <%= simple_form_for :search, url: search_recipes_path, method: :get do |f| %>
+
+
+
+  <form novalidate="novalidate" class="simple_form search" action="<%= search_recipes_path %>" accept-charset="UTF-8" method="get">
+
     <div class="ingredient-slot">
-      <%= f.input :protein, as: :select, collection: @ingredients_proteins %>
+      <fieldset class="mb-3 radio_buttons required search_protein">
+        <legend class="col-form-label pt-0">Protein <abbr title="required">*</abbr></legend>
+        
+        <input type="hidden" name="search[protein]" value="">
+        <div class="icons-container">
+          <% @ingredients_proteins.each do |ingredient| %>
+            <div class="tag-item">
+              <input class="form-check-input radio_buttons required tag-selector" type="radio" value="<%= ingredient.id %>" name="search[protein]" id="search_protein_<%= ingredient.id %>">
+
+              <label class="form-check-label collection_radio_buttons" for="search_protein_<%= ingredient.id %>">
+                <%= cl_image_tag ingredient.photo.key, class: "menu-icon" %>
+              </label>
+            </div>
+          <% end %>
+        </div>
+      </fieldset>
     </div>
+
+
     <div class="ingredient-slot">
-      <%= f.input :carb, as: :select, collection: @ingredients_carbs %>
+      <fieldset class="mb-3 radio_buttons required search_carb">
+        <legend class="col-form-label pt-0">Carb <abbr title="required">*</abbr></legend>
+        <input type="hidden" name="search[carb]" value="">
+        <div class="icons-container">
+          <% @ingredients_carbs.each do |ingredient| %>
+            <div class="tag-item">
+              <input class="form-check-input radio_buttons required tag-selector" type="radio" value="<%= ingredient.id %>" name="search[carb]" id="search_carb_<%= ingredient.id %>">
+
+              <label class="form-check-label collection_radio_buttons" for="search_carb_<%= ingredient.id %>">
+                <%= cl_image_tag ingredient.photo.key, class: "menu-icon" %>
+              </label>
+            </div>
+          <% end %>
+        </div>
+      </fieldset>
     </div>
+
     <div class="ingredient-slot">
-      <%= f.input :vegetable, as: :select, collection: @ingredients_vegetables %>
+      <fieldset class="mb-3 radio_buttons required search_vegetable">
+        <legend class="col-form-label pt-0">Vegetable <abbr title="required">*</abbr></legend>
+        <input type="hidden" name="search[vegetable]" value="">
+        <div class="icons-container">
+          <% @ingredients_vegetables.each do |ingredient| %>
+            <div class="tag-item">
+              <input class="form-check-input radio_buttons required tag-selector" type="radio" value="<%= ingredient.id %>" name="search[vegetable]" id="search_vegetable_<%= ingredient.id %>">
+
+              <label class="form-check-label collection_radio_buttons" for="search_vegetable_<%= ingredient.id %>">
+                <%= cl_image_tag ingredient.photo.key, class: "menu-icon" %>
+              </label>
+            </div>
+          <% end %>
+        </div>
+      </fieldset>
     </div>
-     <%= submit_tag "Search", id: "finish-button" %>
-  <% end %>
+
+    <input type="submit" name="commit" value="Search" id="finish-button" data-disable-with="Search">
+  </form>
 </div>
