@@ -1,14 +1,12 @@
 <div class="show-recipe">
-  <div class="show-image" style="background-image: url('<%= cl_image_path @recipe.photo.key %>')">
+  <div class="show-image" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(255,255,255,0.5)), url('<%= cl_image_path @recipe.photo.key %>')">
     <div class="d-flex justify-content-between">
 
-      <%# 1. FLEXBOX: Back button back to selecion page %>
-      <%= link_to selection_path(@recipe, { recipes: @recipes }) do %>
-        <%= image_tag "back_left.png", height: 35, width: 35, class:"button-show" %>
-      <% end %>
+      <%# 1. FLEXBOX: Home button back to Home page %>
+        <%= link_to root_path do %>
+          <%= image_tag "home.png", height: 35, width: 35, class:"button-icon" %>
+        <% end %>
 
-      <%# 2. FLEXBOX: Showing the Recipe title %>
-      <h1 class = "text-center" class = "m-3" ><strong><%= @recipe.name %></strong></h1>
 
       <%# 3. FLEXBOX: Bookmark - save a favorite recipe <--> delete a favorite recipe in the dashboard %>
       <% if @favorite.nil? %>
@@ -23,6 +21,14 @@
         <% end %>
       <% end %>
     </div>
+      <div class="d-flex justify-content-between">
+        <div class="recipe-title">
+          <%= link_to selection_path(@recipe, { recipes: @recipes }) do %>
+            <%= image_tag "back_left.png", height: 35, width: 35, class:"button-back" %>
+          <% end %>
+          <h1><%= @recipe.name %></h1>
+        </div>
+      </div>
   </div>
 
     <h4 class = "m-3">Cooking instructions:</h4>
