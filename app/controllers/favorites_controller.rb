@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
     @favorite.user = current_user
     @favorite.save
 
-    redirect_to recipe_path(@recipe)
+    redirect_back(fallback_location: root_path)
   end
 
   def dashboard
@@ -18,7 +18,8 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find(params[:id])
     @recipe = @favorite.recipe
     @favorite.destroy
-    redirect_to recipe_path(@recipe)
+
+    redirect_back(fallback_location: root_path)
   end
 
   private
