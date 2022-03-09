@@ -7,6 +7,7 @@
   border-radius: 15px;
   text-decoration: none;
   background-color: #FFC65A;
+  position: relative;
 }
 
 .card-product img {
@@ -16,6 +17,7 @@
   border-radius: 15px;
   margin-left: 15px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: absolute;
 }
 
 .card-product h2 {
@@ -23,6 +25,7 @@
   font-weight: bold;
   margin: 0;
   color: #227C9D;
+  position: relative;
 }
 
 .card-product p {
@@ -31,6 +34,7 @@
   margin-bottom: 0;
   margin-top: 8px;
   color: black;
+  position: relative;
 }
 
 .card-product .card-product-infos {
@@ -44,4 +48,11 @@ a {
   &:hover {
     color: unset;
   }
+}
+
+.delete img {
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+  position:relative;
 }
