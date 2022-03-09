@@ -12,12 +12,12 @@
       <% if @favorite.nil? %>
         <%# 3.1 Flexbox: If is not save in the dasboard, we show the unmark bookmark %>
         <%= link_to recipe_favorites_path(@recipe, { recipes: @recipes }), method: :post do %>
-          <%= image_tag "ribbon.png", height: 35, width: 35, class:"button-show"%>
+          <%= image_tag "ribbon.png", height: 35, width: 35, class:"button-show", remote: true %>
         <% end %>
       <% else %>
         <%# 3.2 Flexbox: If we have a favorite (save in the dashboard), we show the  %>
         <%= link_to favorite_path(@favorite), method: :delete do %>
-          <%= image_tag "ribbon1.png", height: 35, width: 35, class:"button-icon" %>
+          <%= image_tag "ribbon1.png", height: 35, width: 35, class:"button-icon", remote: true %>
         <% end %>
       <% end %>
     </div>
