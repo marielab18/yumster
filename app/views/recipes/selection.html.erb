@@ -7,11 +7,11 @@
         <% end %>
         <% if @favorite.nil? %>
           <%= link_to recipe_favorites_path(@recipe), method: :post do %>
-            <%= image_tag "ribbon.png", height: 35, width: 35, class:"button-icon" %>
+            <%= image_tag "ribbon.png", height: 35, width: 35, class:"button-icon", remote: true %>
           <% end %>
         <% else %>
         <%= link_to favorite_path(@favorite), method: :delete do %>
-          <%= image_tag "ribbon1.png", height: 35, width: 35, class:"button-icon" %>
+          <%= image_tag "ribbon1.png", height: 35, width: 35, class:"button-icon", remote: true %>
         <% end %>
         <% end %>
       </div>
