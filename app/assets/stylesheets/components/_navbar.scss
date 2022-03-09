@@ -40,6 +40,10 @@
   }
 }
 
+.menu.active-tweaks {
+  position: fixed;
+  width: 50%;
+}
 
 .menu.active {
   transform: translate(0, 0);
