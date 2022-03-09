@@ -46,7 +46,10 @@ body {
   background: #FFCB77;
   box-shadow: inset 4px 0px 4px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
-  font-family: Montserrat;
+  font-family: Baloo 2;
+  font-weight: bold;
+  font-size: 18px;
+  color: #227C9D;
 }
 
 #finish-button{
@@ -57,6 +60,7 @@ body {
   border-radius: 10px;
   border-width: 3px;
   width: 70%;
+  color: #227C9D;
 }
 .search{
   display: flex;
@@ -109,6 +113,7 @@ body {
 .tag-selector:checked + label {
   background-color: white;
   color: white;
+  font-size: 0.9rem;
   border: 5px solid #227C9D;
 }
 
