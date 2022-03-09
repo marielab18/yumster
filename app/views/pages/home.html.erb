@@ -1,4 +1,3 @@
-
 <div class= "blue-wrapper">
   <div class="row">
     <div class= "col-12">
@@ -19,15 +18,17 @@
         <legend class="col-form-label pt-0">Protein <abbr title="required">*</abbr></legend>
         
         <input type="hidden" name="search[protein]" value="">
-        <% @ingredients_proteins.each do |ingredient| %>
-          <div class="tag-item">
-            <input class="form-check-input radio_buttons required tag-selector" type="radio" value="<%= ingredient.id %>" name="search[protein]" id="search_protein_<%= ingredient.id %>">
+        <div class="icons-container">
+          <% @ingredients_proteins.each do |ingredient| %>
+            <div class="tag-item">
+              <input class="form-check-input radio_buttons required tag-selector" type="radio" value="<%= ingredient.id %>" name="search[protein]" id="search_protein_<%= ingredient.id %>">
 
-            <label class="form-check-label collection_radio_buttons" for="search_protein_<%= ingredient.id %>">
-              <%= cl_image_tag ingredient.photo.key, class: "menu-icon" %>
-            </label>
-          </div>
-        <% end %>
+              <label class="form-check-label collection_radio_buttons" for="search_protein_<%= ingredient.id %>">
+                <%= cl_image_tag ingredient.photo.key, class: "menu-icon" %>
+              </label>
+            </div>
+          <% end %>
+        </div>
       </fieldset>
     </div>
 
@@ -36,15 +37,17 @@
       <fieldset class="mb-3 radio_buttons required search_carb">
         <legend class="col-form-label pt-0">Carb <abbr title="required">*</abbr></legend>
         <input type="hidden" name="search[carb]" value="">
-        <% @ingredients_carbs.each do |ingredient| %>
-          <div class="tag-item">
-            <input class="form-check-input radio_buttons required tag-selector" type="radio" value="<%= ingredient.id %>" name="search[carb]" id="search_carb_<%= ingredient.id %>">
+        <div class="icons-container">
+          <% @ingredients_carbs.each do |ingredient| %>
+            <div class="tag-item">
+              <input class="form-check-input radio_buttons required tag-selector" type="radio" value="<%= ingredient.id %>" name="search[carb]" id="search_carb_<%= ingredient.id %>">
 
-            <label class="form-check-label collection_radio_buttons" for="search_carb_<%= ingredient.id %>">
-              <%= cl_image_tag ingredient.photo.key, class: "menu-icon" %>
-            </label>
-          </div>
-        <% end %>
+              <label class="form-check-label collection_radio_buttons" for="search_carb_<%= ingredient.id %>">
+                <%= cl_image_tag ingredient.photo.key, class: "menu-icon" %>
+              </label>
+            </div>
+          <% end %>
+        </div>
       </fieldset>
     </div>
 
@@ -52,24 +55,20 @@
       <fieldset class="mb-3 radio_buttons required search_vegetable">
         <legend class="col-form-label pt-0">Vegetable <abbr title="required">*</abbr></legend>
         <input type="hidden" name="search[vegetable]" value="">
-        <% @ingredients_vegetables.each do |ingredient| %>
-          <div class="tag-item">
-            <input class="form-check-input radio_buttons required tag-selector" type="radio" value="<%= ingredient.id %>" name="search[vegetable]" id="search_vegetable_<%= ingredient.id %>">
+        <div class="icons-container">
+          <% @ingredients_vegetables.each do |ingredient| %>
+            <div class="tag-item">
+              <input class="form-check-input radio_buttons required tag-selector" type="radio" value="<%= ingredient.id %>" name="search[vegetable]" id="search_vegetable_<%= ingredient.id %>">
 
-            <label class="form-check-label collection_radio_buttons" for="search_vegetable_<%= ingredient.id %>">
-              <%= cl_image_tag ingredient.photo.key, class: "menu-icon" %>
-            </label>
-          </div>
-        <% end %>
+              <label class="form-check-label collection_radio_buttons" for="search_vegetable_<%= ingredient.id %>">
+                <%= cl_image_tag ingredient.photo.key, class: "menu-icon" %>
+              </label>
+            </div>
+          <% end %>
+        </div>
       </fieldset>
     </div>
 
-
     <input type="submit" name="commit" value="Search" id="finish-button" data-disable-with="Search">
-
-
   </form>
-
-
-  
 </div>
