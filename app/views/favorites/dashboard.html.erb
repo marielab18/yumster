@@ -23,6 +23,11 @@
         <p><%= favorite.recipe.minutes %> Min. </p>
         <p><%= favorite.recipe.nutritional_info %></p>
       </div>
+      <div class="delete">
+        <%= link_to favorite_path(favorite), method: :delete do %>
+          <%= image_tag "delete.png", height: 3, width: 3,  crop: :fill, class:"button-icon" %>
+        <% end %>
+      </div>
     </div>
   <% end  %>
   <% end %>
