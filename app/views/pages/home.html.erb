@@ -1,5 +1,4 @@
 <div class="homepage" id="homepage">
-<div class= "blue-wrapper">
   <div class="row">
     <div class= "col-12">
       <div class= "banner">
@@ -8,6 +7,8 @@
     </div>
   </div>
   <br>
+
+<div class="container">
 
   <form novalidate="novalidate" class="simple_form search" action="<%= search_recipes_path %>" accept-charset="UTF-8" method="get">
 
@@ -29,7 +30,6 @@
         </div>
       </fieldset>
     </div>
-
 
     <div class="ingredient-slot">
       <fieldset class="mb-3 radio_buttons required search_carb">
@@ -69,6 +69,6 @@
 
     <input type="submit" name="commit" value="Search" id="finish-button" data-disable-with="Search">
   </form>
-  <%= image_tag "chasingham.png", class:"hamster-button" %>
 </div>
+
 </div>
