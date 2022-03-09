@@ -23,7 +23,7 @@
     </div>
 
       <div class= "recipe-title">
-        <%= link_to selection_path(@recipe, { recipes: @recipes }) do %>
+        <%= link_to selection_path(@recipe, { recipes: @recipes }), style: "z-index: 1;" do %>
           <%= image_tag "back_left.png", height: 35, width: 35, class:"button-back" %>
         <% end %>
         <h1><%= @recipe.name %></h1>
