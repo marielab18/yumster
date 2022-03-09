@@ -26,12 +26,16 @@
   </div>
 
     <h4 class = "m-3">Cooking instructions:</h4>
+
   <div class= "container-instructions">
 
-    <% @recipe.ingredient_recipes.each do |ing| %>
-      <p class = "text-center" ><%= ing.ingredient.name %></p>
-    <% end %>
+    <div class="d-flex justify-content-between">
+      <% @recipe.ingredient_recipes.each do |ing| %>
+        <%= cl_image_tag ing.ingredient.photo.key, height: 100, width: 100, crop: :fill %>
+      <% end %>
+    </div>
 
     <p class = "m-3"><%= @recipe.instructions %></p>
+
   </div>
 </div>
