@@ -3,7 +3,7 @@ require_relative 'scraper'
 
 def build(items, model_class)
   items.each do |item|
-    puts "Building #{item[:name]} #{model_class}"
+    #puts "Building #{item[:name]} #{model_class}"
     image_url = item.delete(:image_url)
     model = model_class.create!(item)
     file = URI.open(image_url)
@@ -32,13 +32,18 @@ ingredients = [
   { name: 'Noodles', category: 'Carb', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646318741/development/massa_tpwggn.png' },
   { name: 'Rice', category: 'Carb', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646904437/development/japanese-food_v7oxoy.png' },
   { name: 'Chicken', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646317382/chicken_mmehqa.png' },
-  { name: 'Shrimp', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320139/development/shrimp_yh4iir.png' },
+  # { name: 'Shrimp', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320139/development/shrimp_yh4iir.png' },
   { name: 'Beef', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320828/development/vaquinha_wvsu1s.png' },
   { name: 'Salmon', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321716/development/salmon_ocnmrr.png' },
-  { name: 'Carrot', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320914/development/carrot_iacktx.png' },
-  { name: 'Brocolli', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321046/development/broccoli_sumyza.png' },
+  # { name: 'Carrot', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320914/development/carrot_iacktx.png' },
+  # { name: 'Brocolli', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321046/development/broccoli_sumyza.png' },
   { name: 'Onion', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321329/development/onion_nsck5e.png' },
   { name: 'Garlic', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321523/development/garlic_dldlss.png' },
+  { name: 'Tomate', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646924731/development/tomate_povd5k.png' },
+  { name: 'Spinach', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646924731/development/spinach_wgqten.png' },
+  { name: 'Potato', category: 'Carb', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646924731/development/potato_l5ivey.png' },
+  { name: 'Beans', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646924731/development/beans_rwdu9e.png' },
+
 ]
 
 build(ingredients, Ingredient)
@@ -49,42 +54,42 @@ puts 'Start scraping'
 
 # trying new seeds
 
-# Making 8 combinations of ["Rice", "Chicken", "Onion"]
-carb = Ingredient.find_by(name: "Rice")
-protein = Ingredient.find_by(name: "Chicken")
-vegetable = Ingredient.find_by(name: "Onion")
-ingredient = "#{carb.name}  #{protein.name}  #{vegetable.name}"
+# # Making 8 combinations of ["Rice", "Chicken", "Onion"]
+# carb = Ingredient.find_by(name: "Rice")
+# protein = Ingredient.find_by(name: "Chicken")
+# vegetable = Ingredient.find_by(name: "Onion")
+# ingredient = "#{carb.name}  #{protein.name}  #{vegetable.name}"
 
-  # puts 'Scraping recipes with ' + ingredient.capitalize
-chicken_recipes = scrape(ingredient, 8)
+#   # puts 'Scraping recipes with ' + ingredient.capitalize
+# chicken_recipes = scrape(ingredient, 8)
 
-build(chicken_recipes, Recipe) do |recipe|
-  ingredients = [carb, protein, vegetable]
-  # puts "Adding ingredients #{ingredients.map(&:name)} to #{recipe.name}"
-  recipe.ingredients << ingredients
-end
+# build(chicken_recipes, Recipe) do |recipe|
+#   ingredients = [carb, protein, vegetable]
+#   # puts "Adding ingredients #{ingredients.map(&:name)} to #{recipe.name}"
+#   recipe.ingredients << ingredients
+# end
 
-# Making 8 combinations of ["Noodles", "Chicken", "Garlic"]
+# # Making 8 combinations of ["Noodles", "Chicken", "Garlic"]
 
-carb = Ingredient.find_by(name: "Noodles")
-protein = Ingredient.find_by(name: "Chicken")
-vegetable = Ingredient.find_by(name: "Garlic")
-ingredient = "#{carb.name}  #{protein.name}  #{vegetable.name}"
+# carb = Ingredient.find_by(name: "Noodles")
+# protein = Ingredient.find_by(name: "Chicken")
+# vegetable = Ingredient.find_by(name: "Garlic")
+# ingredient = "#{carb.name}  #{protein.name}  #{vegetable.name}"
 
-  # puts 'Scraping recipes with ' + ingredient.capitalize
-chicken_recipes = scrape(ingredient, 8)
+#   # puts 'Scraping recipes with ' + ingredient.capitalize
+# chicken_recipes = scrape(ingredient, 8)
 
-build(chicken_recipes, Recipe) do |recipe|
-  ingredients = [carb, protein, vegetable]
-  # puts "Adding ingredients #{ingredients.map(&:name)} to #{recipe.name}"
-  recipe.ingredients << ingredients
-end
+# build(chicken_recipes, Recipe) do |recipe|
+#   ingredients = [carb, protein, vegetable]
+#   # puts "Adding ingredients #{ingredients.map(&:name)} to #{recipe.name}"
+#   recipe.ingredients << ingredients
+# end
 
 # create 1 combination of each ingredient - by Andre
 
 # get all ingredients grouped by the category
 
-number_of_recipes = 25
+number_of_recipes = 20
 ingredients_grouped_by_category = Ingredient.all.group_by(&:category)
 
 ingredients_grouped_by_category['Carb'].each do |carb|
