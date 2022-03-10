@@ -35,15 +35,16 @@ ingredients = [
   # { name: 'Shrimp', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320139/development/shrimp_yh4iir.png' },
   { name: 'Beef', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320828/development/vaquinha_wvsu1s.png' },
   { name: 'Salmon', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321716/development/salmon_ocnmrr.png' },
-  # { name: 'Carrot', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320914/development/carrot_iacktx.png' },
+  { name: 'Carrot', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320914/development/carrot_iacktx.png' },
   # { name: 'Brocolli', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321046/development/broccoli_sumyza.png' },
   { name: 'Onion', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321329/development/onion_nsck5e.png' },
   { name: 'Garlic', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321523/development/garlic_dldlss.png' },
   { name: 'Tomate', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646924731/development/tomate_povd5k.png' },
-  { name: 'Spinach', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646924731/development/spinach_wgqten.png' },
+  # { name: 'Spinach', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646924731/development/spinach_wgqten.png' },
   { name: 'Potato', category: 'Carb', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646924731/development/potato_l5ivey.png' },
-  { name: 'Beans', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646924731/development/beans_rwdu9e.png' },
-
+  # { name: 'Beans', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646924731/development/beans_rwdu9e.png' },
+  { name: 'Mushroom', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646927719/mushroom_aeywug.png' },
+  { name: 'Bread', category: 'Carb', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646927943/bread_rtokvq.png' },
 ]
 
 build(ingredients, Ingredient)
@@ -89,7 +90,7 @@ puts 'Start scraping'
 
 # get all ingredients grouped by the category
 
-number_of_recipes = 20
+number_of_recipes = 25
 ingredients_grouped_by_category = Ingredient.all.group_by(&:category)
 
 ingredients_grouped_by_category['Carb'].each do |carb|
