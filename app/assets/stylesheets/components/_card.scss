@@ -21,15 +21,17 @@
 }
 
 .card-product h2 {
-  font-size: 23px;
-  font-weight: bold;
+  font-size: 20px;
+  // font-weight: bold;
   margin: 0;
   color: black;
+  font-family: $headers-font;
+
 
 }
 
 .card-product p {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.4;
   margin-bottom: 0;
   margin-top: 8px;
