@@ -21,7 +21,7 @@ User.destroy_all
 puts 'Create Users'
 
 User.create!(
-  email: 'mariela@one.com',
+  email: 'etienne@one.com',
   password: 123456
 )
 
@@ -31,13 +31,19 @@ ingredients = [
   { name: 'Noodles', category: 'Carb', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646318741/development/massa_tpwggn.png' },
   { name: 'Rice', category: 'Carb', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646904437/development/japanese-food_v7oxoy.png' },
   { name: 'Chicken', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646317382/chicken_mmehqa.png' },
-  { name: 'Shrimp', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320139/development/shrimp_yh4iir.png' },
+  # { name: 'Shrimp', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320139/development/shrimp_yh4iir.png' },
   { name: 'Beef', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320828/development/vaquinha_wvsu1s.png' },
   { name: 'Salmon', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321716/development/salmon_ocnmrr.png' },
   { name: 'Carrot', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646320914/development/carrot_iacktx.png' },
-  { name: 'Brocolli', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321046/development/broccoli_sumyza.png' },
+  # { name: 'Brocolli', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321046/development/broccoli_sumyza.png' },
   { name: 'Onion', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321329/development/onion_nsck5e.png' },
   { name: 'Garlic', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646321523/development/garlic_dldlss.png' },
+  { name: 'Tomate', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646924731/development/tomate_povd5k.png' },
+  # { name: 'Spinach', category: 'Vegetable', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646924731/development/spinach_wgqten.png' },
+  { name: 'Potato', category: 'Carb', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646924731/development/potato_l5ivey.png' },
+  { name: 'Beans', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646924731/development/beans_rwdu9e.png' },
+  # { name: 'Mushroom', category: 'Protein', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646927719/mushroom_aeywug.png' },
+  { name: 'Bread', category: 'Carb', image_url: 'https://res.cloudinary.com/dv5lwgtlx/image/upload/v1646927943/bread_rtokvq.png' },
 ]
 
 build(ingredients, Ingredient)
