@@ -83,7 +83,7 @@ end
 
 # get all ingredients grouped by the category
 
-number_of_recipes = 1
+number_of_recipes = 25
 ingredients_grouped_by_category = Ingredient.all.group_by(&:category)
 
 ingredients_grouped_by_category['Carb'].each do |carb|
