@@ -25,6 +25,7 @@
         <p><%= favorite.recipe.minutes %> Min. </p>
         <p><%= favorite.recipe.nutritional_info[0,10] %></p>
       </div>
+      
 
       <div class="delete">
         <%= link_to favorite_path(favorite), method: :delete do %>
