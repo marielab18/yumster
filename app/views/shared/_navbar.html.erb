@@ -6,6 +6,7 @@
   <div class="menu" data-menu-target="menu">
     <ul>
       <span data-action="click->menu#collapse">X</span>
+
       <% if user_signed_in? %>
         <li class="nav-item active">
           <%= link_to "Home", "#", class: "dropdown-item" %>
