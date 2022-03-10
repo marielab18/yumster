@@ -19,19 +19,23 @@
   <div class="card-product mb-3">
     <%= link_to favorite.recipe do %>
       <%= cl_image_tag favorite.recipe.photo.key, height: 500, width: 500, crop: :fill %>
+    <% end %>
 
-      <div class="card-product-infos">
+    <div class="card-product-infos">
+      <%= link_to favorite.recipe do %>
         <h2><%= favorite.recipe.name %></h2>
-        <p><%= favorite.recipe.minutes %> Min. </p>
-        <p><%= favorite.recipe.nutritional_info[0,10] %></p>
-      </div>
-      
-
-      <div class="delete">
-        <%= link_to favorite_path(favorite), method: :delete do %>
-          <%= image_tag "delete.png", height: 3, width: 3,  crop: :fill, class:"button-icon", remote: true %>
-        <% end %>
-      </div>
-  <% end  %>
+        <div class="d-flex justify-content-between">
+          <p><%= favorite.recipe.minutes %> Min. </p>
+          <p><%= favorite.recipe.nutritional_info[0,10] %></p>
+        </div>
+      <% end %>
     </div>
+
+    <div class="delete">
+      <%= link_to favorite_path(favorite), method: :delete do %>
+        <%= image_tag "delete.png", height: 3, width: 3,  crop: :fill, class:"button-icon", remote: true %>
+      <% end %>
+    </div>
+
+  </div>
 <% end %>
