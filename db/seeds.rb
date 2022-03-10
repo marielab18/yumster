@@ -21,9 +21,10 @@ User.destroy_all
 puts 'Create Users'
 
 User.create!(
-  email: 'mariela@one.com',
+  email: 'etienne@one.com',
   password: 123456
 )
+
 
 puts 'Create Ingredients'
 
