@@ -16,7 +16,7 @@
 
 
 <% @favorite_recipes.each do |favorite| %>
-  <div class="card-product mb-3">
+  <div class="card-product mb-3 justify-content-between">
     <%= link_to favorite.recipe do %>
       <%= cl_image_tag favorite.recipe.photo.key, height: 500, width: 500, crop: :fill %>
     <% end %>
@@ -31,7 +31,7 @@
       <% end %>
     </div>
 
-    <div class="delete">
+    <div class="delete justify-content-end">
       <%= link_to favorite_path(favorite), method: :delete do %>
         <%= image_tag "delete.png", height: 3, width: 3,  crop: :fill, class:"button-icon", remote: true %>
       <% end %>
