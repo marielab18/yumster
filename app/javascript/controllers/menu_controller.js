@@ -4,6 +4,13 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["menu", "navbar"]
 
+connect() {
+  const homepage = document.getElementById("homepage")
+  homepage.addEventListener("click", (event) => {
+    this.collapse(event)
+  })
+}
+
   expand(event) {
     this.menuTarget.classList.add("active-tweaks")
     this.menuTarget.classList.add("active")
