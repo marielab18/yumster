@@ -6,12 +6,12 @@
           <%= image_tag "home.png", height: 35, width: 35, class:"button-icon" %>
         <% end %>
         <% if @favorite.nil? %>
-          <%= link_to recipe_favorites_path(@recipe), method: :post do %>
-            <%= image_tag "ribbon.png", height: 35, width: 35, class:"button-icon", remote: true %>
+          <%= link_to recipe_favorites_path(@recipe), remote: true, method: :post do %>
+            <%= image_tag "ribbon.png", height: 35, width: 35, class:"button-icon" %>
           <% end %>
         <% else %>
-        <%= link_to favorite_path(@favorite), method: :delete do %>
-          <%= image_tag "ribbon1.png", height: 35, width: 35, class:"button-icon", remote: true %>
+        <%= link_to favorite_path(@favorite), remote: true, method: :delete do %>
+          <%= image_tag "ribbon1.png", height: 35, width: 35, class:"button-icon" %>
         <% end %>
         <% end %>
       </div>
