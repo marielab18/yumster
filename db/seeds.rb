@@ -25,6 +25,7 @@ User.create!(
   password: 123456
 )
 
+
 puts 'Create Ingredients'
 
 ingredients = [
