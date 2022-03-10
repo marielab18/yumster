@@ -38,7 +38,7 @@ class RecipesController < ApplicationController
   end
 
   def shuffle_recipes(protein, carb, vegetable)
-    recipes = Recipe.all
+    recipes = Recipe.all.includes :ingredients
     recipes.filter do |recipe|
       ingredients_ids = recipe.ingredients.pluck(:id)
       ingredients_ids.include?(protein) &&
